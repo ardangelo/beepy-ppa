@@ -8,8 +8,10 @@
 
 ## `beepy-kbd` firmware check
 
-The keyboard and firmware driver package will run a preinstall check to ensure that the Beepy firmware is compatible with the driver
+The keyboard and firmware driver package will run a preinstall check to ensure that the Beepy firmware is compatible with the driver.
+
 If the installed firmware is detected as incompatible, the installation will be canceled.
+
 A link to a compatible firmware release will be output as part of the error message.
 
 ## Cleaning old drivers
@@ -20,17 +22,17 @@ Driver packages will detect if one of these old modules is installed and cancel 
 
 Remove the following files:
 
-	* `/lib/modules/<uname>/extra/bbqX0kbd.ko*`
-	* `/lib/modules/<uname>/extra/sharp.ko*`
-	* `/boot/overlays/i2c-bbqX0kbd.dtbo`
-	* `/boot/overlays/sharp.dtbo`
+* `/lib/modules/<uname>/extra/bbqX0kbd.ko*`
+* `/lib/modules/<uname>/extra/sharp.ko*`
+* `/boot/overlays/i2c-bbqX0kbd.dtbo`
+* `/boot/overlays/sharp.dtbo`
 
 Remove the following lines from `/boot/config.txt`:
 
-	* `dtoverlay=bbqX0kbd,irq_pin=4`
-	* `dtoverlay=sharp`
+* `dtoverlay=bbqX0kbd,irq_pin=4`
+* `dtoverlay=sharp`
 
 Remove the following lines from `/etc/modules`:
 
-	* `bbqX0kbd`
-	* `sharp`
+* `bbqX0kbd`
+* `sharp`
