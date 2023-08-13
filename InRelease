@@ -1,0 +1,34 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Date: Sun, 13 Aug 2023 00:47:12 +0000
+MD5Sum:
+ 4f0c3e22b12ee774984df9a0d981d37b              918 Packages
+ c1208c530d1262379052902790f3d362              510 Packages.gz
+ 8caac6abdaea74f39a3e74d7385ca024               38 Release
+SHA1:
+ d8fccb85c2b8ddb2ab501c3aefdfe1efb55d68cc              918 Packages
+ ced9a61b0dcaad0a35d73175289f676b0b13b756              510 Packages.gz
+ 571aac423c43b2ca40ffb36bd92a69298342c577               38 Release
+SHA256:
+ 4a27c3bd38f93491fc85e9f9a46e76681bc819a4d498380fab98dd54bd6f4229              918 Packages
+ 44e1c1ae0d7f8025f95abdf16139d680476d51b6db302f449eb83e10c1353c2f              510 Packages.gz
+ d073c27cf0a9cddf87a013a77e2c95ffd246b40422beb669960bf67984e11613               38 Release
+SHA512:
+ c346041c5d11acef158f89a6e418b1f111cdc35b9019c47d3c71b59a360a3a37930fabebe22742a3857aacc04530837cbd56e335a3989e08191236d4b9b941fa              918 Packages
+ dc2e11aa611dc39aa0e178862f8d2c5dcdcc64358a723d068ade56d95ed100c7ad8acb34ea331cea465e2d1149c6bea0a44e0d3a181f5dc71de667f26cfe5bf5              510 Packages.gz
+ 3a75363529ebcd1163c96d4031248529db41ff18f0271c6334d3dba5c405cfd92de30e618356be2291c07c83b093593fefc00ba47b1417e88669f73a776a3f57               38 Release
+-----BEGIN PGP SIGNATURE-----
+
+iQHOBAEBCgA4FiEEtjLAhQiq+1oZNs5dpT4JQwWQIUsFAmTYKBEaHGRhbmdlbG9h
+bmRyZXdAb3V0bG9vay5jb20ACgkQpT4JQwWQIUvSsgwAjgNRwjryXDe4UMpg277k
+h0Qd+Gn1XrGrH0UuFSF911K5y629/JnPoE9o0XP8425ttLnB2e11d17Zyj4CsQcW
+cr6bQ4oGPqG7IMuUq8oEAk3KydLZWCC9r8UkggIaKiFxYHiEbfyIe3c+wLdYHw81
+BZbk5/8i64NegEB/v4ejqsyNIqPJWsCZOdkUu3O/VM4yA+mARNHn96g9jn1xDHjl
+8dRKy4fKnNzAiQ2TyzU0s0Ykvfqr+Bh6ggXx316o3CNhVQgkN1vlGG8H5g3D7NOI
+hey3s86Cjbcv3Cx4S5RswxIEdnbub/dR7zqp8ZMDDDj2+wne1330Fn4zJs8+BfpN
+fVZHZIUmf0HjHbOOOCPDJsbmeHJ5A+caG4OzvPFqox3dLquCrVSWez9Q22+otMWL
+PXseAcy00kQwcOAsYQjub/3GurjCdncsqygf1RScvwsJoaw9fHabJenCsFmtuTQr
+MqYXe0LLWTdmS97SMjgjGjkWHch5RBr3IUyOvnav2lJ8
+=fSpo
+-----END PGP SIGNATURE-----
