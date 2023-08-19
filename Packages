@@ -54,3 +54,17 @@ SHA256: e2995aea1eb88a5248f3f330335b90cea0842393615d534a82e2d684e4da65cc
 Section: embedded
 Description: Display driver for the Beepy device
 
+Package: sharp-drm
+Version: 1.0-2
+Architecture: armhf
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 80
+Depends: dkms (>= 2.1.0.0)
+Filename: ./sharp-drm/sharp-drm_1.0-2_armhf.deb
+Size: 18256
+MD5sum: 0a1208dd6a9f6aa2242ce4fbaf44ecda
+SHA1: 72831234b972ac82f9437f2753e9711bfeb101a8
+SHA256: 7d24c76ebbb781353521aadf3c601d6e256b0432ad8dae1feba8357fb2fca5cb
+Section: embedded
+Description: Display driver for the Beepy device
+
