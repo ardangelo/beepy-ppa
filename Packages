@@ -33,10 +33,10 @@ Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
 Installed-Size: 2730
 Depends: dkms (>= 2.1.0.0), i2c-tools
 Filename: ./beepy-kbd/beepy-kbd_2.1-2_armhf.deb
-Size: 334236
-MD5sum: b74257a6ad2ca86ab81967b752da958b
-SHA1: 38e80793e5b6955e68480a993d3558d70fa11c88
-SHA256: ba24c65ae5ba723fbaa94ac4f0ce65bf84d1f3e9138e530292940ef41f1c1ba9
+Size: 332728
+MD5sum: 42b2e05050cb7457cb67d6bf34e01fdd
+SHA1: ea9876c13ea16e543b51b1b0ed2a307887c32e7c
+SHA256: 5003cd5a02ceb56223d50ea3be2f14e5b528acf63323d104a7883fba5e592b55
 Section: embedded
 Description: Keyboard and firmware driver for the Beepy device
 
@@ -61,10 +61,10 @@ Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
 Installed-Size: 80
 Depends: dkms (>= 2.1.0.0)
 Filename: ./sharp-drm/sharp-drm_1.0-2_armhf.deb
-Size: 18256
-MD5sum: 0a1208dd6a9f6aa2242ce4fbaf44ecda
-SHA1: 72831234b972ac82f9437f2753e9711bfeb101a8
-SHA256: 7d24c76ebbb781353521aadf3c601d6e256b0432ad8dae1feba8357fb2fca5cb
+Size: 18260
+MD5sum: 71ce932118084a9ed1547f7619d68e8c
+SHA1: 39fd595c6cf83e4d2a1140c9c0bb343252b823bf
+SHA256: 7fb9972cb5385161f12f2cd1bf6614c3fac6860b8c668efa31fc05ae3e6fa8dc
 Section: embedded
 Description: Display driver for the Beepy device
 
