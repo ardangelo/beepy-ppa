@@ -33,10 +33,10 @@ Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
 Installed-Size: 2730
 Depends: dkms (>= 2.1.0.0), i2c-tools
 Filename: ./beepy-kbd/beepy-kbd_2.1-2_armhf.deb
-Size: 333596
-MD5sum: 9e1548486eaf47859270a4d18daea874
-SHA1: 1373910db7c43289438f21dc1ffb287c8132d638
-SHA256: a9cce8a574f44a8a3dcf334c46c1d2a03d2e0d7c54f04e0e173e93a42a181246
+Size: 334236
+MD5sum: b74257a6ad2ca86ab81967b752da958b
+SHA1: 38e80793e5b6955e68480a993d3558d70fa11c88
+SHA256: ba24c65ae5ba723fbaa94ac4f0ce65bf84d1f3e9138e530292940ef41f1c1ba9
 Section: embedded
 Description: Keyboard and firmware driver for the Beepy device
 
