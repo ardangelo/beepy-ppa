@@ -1,10 +1,11 @@
 # Beepy package repository
 
-## Adding to APT
+## Adding to APT and installing drivers
 
 	curl -s --compressed "https://ardangelo.github.io/beepy-ppa/KEY.gpg" | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/beepy.gpg >/dev/null
 	sudo curl -s --compressed -o /etc/apt/sources.list.d/beepy.list "https://ardangelo.github.io/beepy-ppa/beepy.list"
 	sudo apt update
+	sudo apt-get -y install beepy-kbd sharp-drm
 
 ## `beepy-kbd` firmware check
 
@@ -14,7 +15,9 @@ If the installed firmware is detected as incompatible, the installation will be 
 
 A link to a compatible firmware release will be output as part of the error message.
 
-## Cleaning old drivers
+## Cleaning old source builds of drivers
+
+If you have not installed previous versions of the drivers from source, disregard this section.
 
 The `bbqX0kbd` driver has been renamed to `beepy-kbd`, and `sharp` to `sharp-drm`.
 
