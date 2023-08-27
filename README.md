@@ -1,4 +1,7 @@
 # Beepy package repository
+{:.no_toc}
+
+{:toc}
 
 ## Updating firmware
 
