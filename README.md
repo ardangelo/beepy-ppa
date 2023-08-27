@@ -3,6 +3,7 @@
 ## Updating firmware
 
 * [Download the latest firmware image](https://github.com/ardangelo/beepberry-rp2040/releases/latest/download/i2c_puppet.uf2)
+	* *Update Aug 27 2023*: there is a known issue with SQFMI's published firmware image v2.1 causing stuck keys. Please ensure that you have installed the release from the link above.
 * Slide the power switch off (left if facing up)
 * Connect the Beepy to your computer via USB-C
 * While holding the "End Call" key (top right on the keypad), slide the power switch on
@@ -10,10 +11,13 @@
 
 ## Adding to APT and installing drivers
 
+SSH into the Pi and install driver packages. The LED will remain green until drivers are installed and the system has rebooted.
+
 	curl -s --compressed "https://ardangelo.github.io/beepy-ppa/KEY.gpg" | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/beepy.gpg >/dev/null
 	sudo curl -s --compressed -o /etc/apt/sources.list.d/beepy.list "https://ardangelo.github.io/beepy-ppa/beepy.list"
 	sudo apt update
 	sudo apt-get -y install beepy-kbd sharp-drm
+	sudo reboot
 
 ## `beepy-kbd` firmware check
 
