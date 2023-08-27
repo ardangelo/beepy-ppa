@@ -1,5 +1,13 @@
 # Beepy package repository
 
+## Updating firmware
+
+* [Download the latest firmware image](https://github.com/ardangelo/i2c_puppet/releases/latest/download/i2c_puppet.uf2)
+* Slide the power switch off (left if facing up)
+* Connect the Beepy to your computer via USB-C
+* While holding the "End Call" key (top right on the keypad), slide the power switch on
+* The Beepy will present itself as a USB mass storage device. Copy the firmware image into the drive and it will reboot with the new firmware
+
 ## Adding to APT and installing drivers
 
 	curl -s --compressed "https://ardangelo.github.io/beepy-ppa/KEY.gpg" | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/beepy.gpg >/dev/null
