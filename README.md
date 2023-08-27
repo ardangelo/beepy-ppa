@@ -2,7 +2,7 @@
 
 ## Updating firmware
 
-* [Download the latest firmware image](https://github.com/ardangelo/i2c_puppet/releases/latest/download/i2c_puppet.uf2)
+* [Download the latest firmware image](https://github.com/ardangelo/beepberry-rp2040/releases/latest/download/i2c_puppet.uf2)
 * Slide the power switch off (left if facing up)
 * Connect the Beepy to your computer via USB-C
 * While holding the "End Call" key (top right on the keypad), slide the power switch on
