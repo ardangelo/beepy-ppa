@@ -77,7 +77,7 @@ The alternate symbols printed directly on the Beepy keys are triggered by pressi
 
 #### Symbol key map
 
-<img src="https://github.com/ardangelo/beepy-docs/blob/main/docs/firmware/img/symbol-keys.png?raw=true" width="100%"/>
+<img src="https://github.com/sqfmi/beepy-docs/blob/gh-pages/img/symbol-keys.png?raw=true" width="100%"/>
 
 #### Sticky modifier keys
 
