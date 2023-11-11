@@ -54,6 +54,20 @@ SHA256: ef3011e46069318e4c2212975e1e34dc67a90003ab778dda5c389a2e4355fe46
 Section: embedded
 Description: Keyboard and firmware driver for the Beepy device
 
+Package: beepy-kbd
+Version: 2.2-3
+Architecture: armhf
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 4582
+Depends: dkms (>= 2.1.0.0), i2c-tools
+Filename: ./beepy-kbd/beepy-kbd_2.2-3_armhf.deb
+Size: 486888
+MD5sum: fec13b840c8ed957d1e9c4932685c8e0
+SHA1: 4f3554df02f7bf99a4938519eeac87cd86bc7500
+SHA256: fec6e1951f0e81d0a3d8e681d2a8ed60521f3cf66ec231d2e25b160c65920bcd
+Section: embedded
+Description: Keyboard and firmware driver for the Beepy device
+
 Package: sharp-drm
 Version: 1.0-1
 Architecture: armhf
@@ -107,6 +121,20 @@ Size: 17668
 MD5sum: 2fca04594a6a9c1da4b03e454feaab32
 SHA1: 9660c69beb3f06ca00d2a47274adb54c31226089
 SHA256: 00ba8329a6a61159a0a264d4ea4330d46516f718ceade6293b9286b16c951078
+Section: embedded
+Description: Display driver for the Beepy device
+
+Package: sharp-drm
+Version: 1.1-2
+Architecture: armhf
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 2480
+Depends: dkms (>= 2.1.0.0)
+Filename: ./sharp-drm/sharp-drm_1.1-2_armhf.deb
+Size: 295912
+MD5sum: 5c78d7b78703dbff577f540a628a91e6
+SHA1: c3e1219afd39a5d0824f6f298214397239fb85d6
+SHA256: cbf4530289a58e0b07fe6d6d7d44be50f425f777fe3ba02d093e9ee4fd7263f4
 Section: embedded
 Description: Display driver for the Beepy device
 
