@@ -2,7 +2,7 @@
 
 {:toc}
 
-## Updating firmware
+## Updating firmware from 2.X to 3.0
 
 * [Download the latest firmware image](https://github.com/ardangelo/beepberry-rp2040/releases/latest/download/i2c_puppet.uf2)
 	* *Update Aug 27 2023*: there is a known issue with SQFMI's published firmware image v2.1 causing stuck keys. Please ensure that you have installed the release from the link above.
@@ -11,6 +11,16 @@
 * While holding the "End Call" key (top right on the keypad), slide the power switch on
 * The Beepy will present itself as a USB mass storage device. Copy the firmware image into the drive and it will reboot with the new firmware
 
+## Updating firmware from 3.0 to a later version
+
+Starting with firmware version 3.0 and `beepy-kbd` 2.4, the package `beepy-fw` can be used to update firmware directly from Beepy.
+If you have a firmware version older than 3.0 installed, please update manually by flashing the `uf2` image over USB.
+
+`beepy-fw` provides a script `/sbin/update-beepy-fw` and a copy of the firmware.
+After installing `beepy-fw`, you can install a newer firmware by running the interactive script
+
+	/sbin/update-beepy-fw
+
 ## Adding to APT and installing drivers
 
 SSH into the Pi and install driver packages. The LED will remain green until drivers are installed and the system has rebooted.
@@ -18,45 +28,64 @@ SSH into the Pi and install driver packages. The LED will remain green until dri
 	curl -s --compressed "https://ardangelo.github.io/beepy-ppa/KEY.gpg" | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/beepy.gpg >/dev/null
 	sudo curl -s --compressed -o /etc/apt/sources.list.d/beepy.list "https://ardangelo.github.io/beepy-ppa/beepy.list"
 	sudo apt update
-	sudo apt-get -y install beepy-kbd sharp-drm
+	sudo apt-get -y install beepy-fw beepy-kbd sharp-drm
 	sudo reboot
 
-The keyboard and firmware driver package will run a preinstall check to ensure that the Beepy firmware is compatible with the driver.
+The keyboard driver package will run a preinstall check to ensure that the Beepy firmware is compatible with the driver.
 
 If the installed firmware is detected as incompatible, the installation will be canceled.
 
 A link to a compatible firmware release will be output as part of the error message.
 
-## Cleaning old source builds of drivers
-
-If you have not installed previous versions of the drivers from source, disregard this section.
-
-The `bbqX0kbd` driver has been renamed to `beepy-kbd`, and `sharp` to `sharp-drm`.
-
-Driver packages will detect if one of these old modules is installed and cancel installation of the package.
-
-Remove the following files:
-
-* `/lib/modules/<uname>/extra/bbqX0kbd.ko*`
-* `/lib/modules/<uname>/extra/sharp.ko*`
-* `/boot/overlays/i2c-bbqX0kbd.dtbo`
-* `/boot/overlays/sharp.dtbo`
-
-Rebuild the module list:
-
-* `depmod -a`
-
-Remove the following lines from `/boot/config.txt`:
-
-* `dtoverlay=bbqX0kbd,irq_pin=4`
-* `dtoverlay=sharp`
-
-Remove the following lines from `/etc/modules`:
-
-* `bbqX0kbd`
-* `sharp`
-
 ## Package listing
+
+### `beepy-fw`
+
+`beepy-fw` provides a script `update-beepy-fw` and a copy of the firmware.
+After installing `beepy-fw`, you can install a newer firmware by running as root
+
+	/sbin/update-beepy-fw
+
+Newer firmware versions will be listed along with a prompt to select the version to install.
+
+	Installed firmware: 3.0
+	Newer firmware in /usr/lib/beepy-firmware:
+	[ 0] 3.1: beepy_3.1.hex
+	Enter number of newer firmware to install: _
+
+If the update completes successfully, the system will be rebooted.
+There is a 30 second delay (configurable at `/sys/module/beepy_kbd/parameters/shutdown_grace` to allow the operating system to cleanly shut down before the Pi is powered off.
+The firmware is flashed right before the Pi boots back up, so please wait until the system reboots on its own before removing power.
+
+If the update fails or is otherwise interrupted, the firmware will not be installed. You can retry the firmware installation by re-running the utility.
+
+If your firmware is up to date, no newer firmware will be listed.
+
+	Installed firmware: 3.1
+	Newer firmware in /usr/lib/beepy-firmware:
+		(None found)
+
+All available firmware images can be listed with
+
+	/sbin/update-beepy-fw --list
+
+	Beepy firmware updater
+	Installed firmware: 3.0
+	Installed firmware in /usr/lib/beepy-firmware:
+		 3.0: beepy_3.0.hex
+
+	Older firmware in /usr/lib/beepy-firmware:
+		 2.9: beepy_2.9.hex
+
+A custom second stage firmware image can be flashed with
+
+	/sbin/update-beepy-fw path_to_custom_firmware.hex
+
+Second stage firmware files start with a header line followed by the firmware image in Intel HEX format.
+
+	+My custom Beepy firmware
+	:020000041000EA
+	...
 
 ### `beepy-kbd`
 
@@ -144,3 +173,33 @@ Write to `/sys/module/sharp_drm/parameters/<param>` to set, or unload and reload
 - `mono_cutoff`: Consider all pixels with one of R, G, B below this threshold to be black, otherwise white (default 32)
 - `mono_invert`: 0 for white-on-black, 1 for black-on-white
 - `indicators`: 0 to disable mode indicators (default enabled)
+
+## Cleaning old source builds of drivers
+
+If you have not installed previous versions of the drivers from source, disregard this section.
+
+The `bbqX0kbd` driver has been renamed to `beepy-kbd`, and `sharp` to `sharp-drm`.
+
+Driver packages will detect if one of these old modules is installed and cancel installation of the package.
+
+Remove the following files:
+
+* `/lib/modules/<uname>/extra/bbqX0kbd.ko*`
+* `/lib/modules/<uname>/extra/sharp.ko*`
+* `/boot/overlays/i2c-bbqX0kbd.dtbo`
+* `/boot/overlays/sharp.dtbo`
+
+Rebuild the module list:
+
+* `depmod -a`
+
+Remove the following lines from `/boot/config.txt`:
+
+* `dtoverlay=bbqX0kbd,irq_pin=4`
+* `dtoverlay=sharp`
+
+Remove the following lines from `/etc/modules`:
+
+* `bbqX0kbd`
+* `sharp`
+
