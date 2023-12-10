@@ -5,7 +5,6 @@
 ## Updating firmware from 2.X to 3.0
 
 * [Download the latest firmware image](https://github.com/ardangelo/beepberry-rp2040/releases/latest/download/i2c_puppet.uf2)
-	* *Update Aug 27 2023*: there is a known issue with SQFMI's published firmware image v2.1 causing stuck keys. Please ensure that you have installed the release from the link above.
 * Slide the power switch off (left if facing up)
 * Connect the Beepy to your computer via USB-C
 * While holding the "End Call" key (top right on the keypad), slide the power switch on
