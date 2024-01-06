@@ -24,6 +24,19 @@ SHA256: fcad8c49a249bb09937079575febf0edce2242e4a0bce811b5c9a243c3eac6dd
 Section: embedded
 Description: Beepy firmware and installer script
 
+Package: beepy-fw
+Version: 3.2-1
+Architecture: armhf
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 102
+Filename: ./beepy-kbd/beepy-fw_3.2-1_armhf.deb
+Size: 31036
+MD5sum: 2b858a12611f19424f727bc636c69956
+SHA1: cadbfbe33a34c78b0e03067a3b007e945b95a054
+SHA256: 984116c85457991cea89320a9ad37b2fbb1b9f4603be34894c2bafaad666eb97
+Section: embedded
+Description: Beepy firmware and installer script
+
 Package: beepy-kbd
 Version: 2.0-1
 Architecture: armhf
