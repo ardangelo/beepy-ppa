@@ -273,10 +273,10 @@ Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
 Installed-Size: 72
 Depends: dkms (>= 2.1.0.0)
 Filename: ./sharp-drm/sharp-drm_1.4-1_armhf.deb
-Size: 17968
-MD5sum: 24348668086bb1173a47d047cad4163a
-SHA1: 99b4c6b6cb69293690ccdeface769b19a4ee9b7e
-SHA256: 468d02feeb65fc0360534b6acb13be7ec728b09d3b37dc091d4b033eaacc053d
+Size: 17972
+MD5sum: d6736c94d29203265b691fec4282fbab
+SHA1: d2554740af2ab44e865f45efb61b0697ffbccdc6
+SHA256: b33337c5074ffd6f39cd944c1b708396304217803a2ae3e99ffefa4a8a4fdc17
 Section: embedded
 Description: Display driver for the Beepy device
 
