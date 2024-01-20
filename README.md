@@ -2,7 +2,7 @@
 
 {:toc}
 
-## Updating firmware from 2.X to 3.0
+## Updating firmware from 2.X
 
 * [Download the latest firmware image](https://github.com/ardangelo/beepberry-rp2040/releases/latest/download/i2c_puppet.uf2)
 * Slide the power switch off (left if facing up)
@@ -10,7 +10,7 @@
 * While holding the "End Call" key (top right on the keypad), slide the power switch on
 * The Beepy will present itself as a USB mass storage device. Copy the firmware image into the drive and it will reboot with the new firmware
 
-## Updating firmware from 3.0 to a later version
+## Updating firmware from 3.0 on-device
 
 Starting with firmware version 3.0 and `beepy-kbd` 2.4, the package `beepy-fw` can be used to update firmware directly from Beepy.
 If you have a firmware version older than 3.0 installed, please update manually by flashing the `uf2` image over USB.
