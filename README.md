@@ -27,7 +27,7 @@ SSH into the Pi and install driver packages. The LED will remain green until dri
 	curl -s --compressed "https://ardangelo.github.io/beepy-ppa/KEY.gpg" | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/beepy.gpg >/dev/null
 	sudo curl -s --compressed -o /etc/apt/sources.list.d/beepy.list "https://ardangelo.github.io/beepy-ppa/beepy.list"
 	sudo apt update
-	sudo apt-get -y install beepy-fw beepy-kbd sharp-drm
+	sudo apt-get -y install beepy-fw sharp-drm beepy-symbol-overlay beepy-kbd
 	sudo reboot
 
 The keyboard driver package will run a preinstall check to ensure that the Beepy firmware is compatible with the driver.
@@ -91,13 +91,16 @@ Second stage firmware files start with a header line followed by the firmware im
 #### Basic key mappings
 
 - Call is mapped to Control
-- "Berry" key is mapped to Tmux prefix (customize the prefix in the keymap file)
-- Touchpad click enters Meta mode (see the section on Meta mode). Double click enters touchpad scroll mode
+- "Berry" key enters Meta mode (see the section on Meta Mode)
+- Touchpad click enables the optical touch sensor, sending arrow keys. Subsequent clicks send Enter
 - Back is mapped to Escape
+- Pressing "End Call" sends Tmux prefix (customize the prefix in the keymap file)
 - Holding "End Call" safely shuts down the Pi
 - Physical Alt is mapped to symbols printed on the keycap
 - Symbol is mapped to AltGr (Right Alt), mapped to more symbols via the keymap file
+- Holding Symbol displays the configured Symbol keymap
 - Physical Alt + Enter is mapped to Tab
+- Holding Shift temporarily enables the touch sensor until Shift is released
 
 #### Alt and Sym modifiers
 
@@ -153,9 +156,13 @@ The following sysfs entries are available under `/sys/firmware/beepy`:
 
 Write to `/sys/module/beepy_kbd/parameters/<param>` to set, or unload and reload the module with `beepy-kbd param=val`.
 
-- `touchpad`: one of `meta` or `keys`
-    - `meta`: default, will use the touchpad button to enable or disable Meta mode
-    - `keys`: touchpad always on, swiping sends arrow keys, clicking sends Enter
+- `touch_act`: one of `click` or `always`
+  - `click`: default, will disable touchpad until the touchpad button is clicked
+  - `always`: touchpad always on, swiping sends touch input, clicking sends Enter
+- `touch_as`: one of `keys` or `mouse`
+  - `keys`: default, send arrow keys with the touchpad
+  - `mouse`: send mouse input (useful for X11)
+- `touch_shift`: default on. Send touch input while the Shift key is held
 
 #### Custom Keymap
 
