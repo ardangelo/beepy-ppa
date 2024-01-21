@@ -164,6 +164,20 @@ SHA256: 1b8517ec365978944666b2023f2e39763a640b0d3859556083454de6e99ba410
 Section: embedded
 Description: Beepy symbol menu overlay for sharp-drm
 
+Package: beepy-symbol-overlay
+Version: 1.0-2
+Architecture: armhf
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 1464
+Depends: sharp-drm (>= 1.4)
+Filename: ./beepy-symbol-overlay/beepy-symbol-overlay_1.0-2_armhf.deb
+Size: 444176
+MD5sum: 62b038a0b2510a6171cc5bcb97bb325b
+SHA1: b876b38c18f38b384442e8db5562f9e46d77310c
+SHA256: 2cb78eb019591cac8e12320c227f12ec11796f0f91d8493a3573304279503b27
+Section: embedded
+Description: Beepy symbol menu overlay for sharp-drm
+
 Package: beepy-symbol-overlay-dbgsym
 Source: beepy-symbol-overlay
 Version: 1.0-1
@@ -181,6 +195,24 @@ Section: debug
 Priority: optional
 Description: debug symbols for beepy-symbol-overlay
 Build-Ids: 209b726ee5d0085618cbad824b6c2db1afd1bd46
+
+Package: beepy-symbol-overlay-dbgsym
+Source: beepy-symbol-overlay
+Version: 1.0-2
+Auto-Built-Package: debug-symbols
+Architecture: armhf
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 986
+Depends: beepy-symbol-overlay (= 1.0-2)
+Filename: ./beepy-symbol-overlay/beepy-symbol-overlay-dbgsym_1.0-2_armhf.deb
+Size: 498992
+MD5sum: e64b8e5b0993d66312580abb46a8c6cb
+SHA1: 42fc1f103a40e2614a0acf9d79c6390040d54c40
+SHA256: 4d09573f859aa75ae6f0ffa9731627759de4a31ec87e9deb4113507ca38200f0
+Section: debug
+Priority: optional
+Description: debug symbols for beepy-symbol-overlay
+Build-Ids: 5c631845522c1c6525a0e64d4b9dfaf3cd1c783a
 
 Package: sharp-drm
 Version: 1.0-1
