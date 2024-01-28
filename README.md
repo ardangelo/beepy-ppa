@@ -27,7 +27,7 @@ SSH into the Pi and install driver packages. The LED will remain green until dri
 	curl -s --compressed "https://ardangelo.github.io/beepy-ppa/KEY.gpg" | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/beepy.gpg >/dev/null
 	sudo curl -s --compressed -o /etc/apt/sources.list.d/beepy.list "https://ardangelo.github.io/beepy-ppa/beepy.list"
 	sudo apt update
-	sudo apt-get -y install beepy-fw sharp-drm beepy-symbol-overlay beepy-kbd
+	sudo apt-get -y install beepy-fw sharp-drm beepy-symbol-overlay beepy-kbd beepy-tmux-menus
 	sudo reboot
 
 The keyboard driver package will run a preinstall check to ensure that the Beepy firmware is compatible with the driver.
@@ -88,27 +88,11 @@ Second stage firmware files start with a header line followed by the firmware im
 
 ### `beepy-kbd`
 
-#### Basic key mappings
-
-- Call is mapped to Control
-- "Berry" key enters Meta mode (see the section on Meta Mode)
-- Touchpad click enables the optical touch sensor, sending arrow keys. Subsequent clicks send Enter
-- Back is mapped to Escape
-- Pressing "End Call" sends Tmux prefix (customize the prefix in the keymap file)
-- Holding "End Call" safely shuts down the Pi
-- Physical Alt is mapped to symbols printed on the keycap
-- Symbol is mapped to AltGr (Right Alt), mapped to more symbols via the keymap file
-- Holding Symbol displays the configured Symbol keymap
-- Physical Alt + Enter is mapped to Tab
-- Holding Shift temporarily enables the touch sensor until Shift is released
-
 #### Alt and Sym modifiers
 
-The alternate symbols printed directly on the Beepy keys are triggered by pressing the physical Alt key, then the key on which the symbol is printed. For additional symbols not printed directly on the keys, the Sym key is used.
+The alternate symbols printed directly on the Beepy keys are triggered by pressing the physical Alt key, then the key on which the symbol is printed.
 
-#### Symbol key map
-
-<img src="https://github.com/sqfmi/beepy-docs/blob/gh-pages/img/symbol-keys.png?raw=true" width="100%"/>
+For additional symbols not printed directly on the keys, the Sym key is used. Sym sends AltGr (Right Alt), which is mapped to more symbols via the keymap file at `/usr/share/kbd/keymaps/beepy-kbd.map`.
 
 #### Sticky modifier keys
 
@@ -118,6 +102,27 @@ One press and release of the modifier will enter sticky mode, applying the modif
 
 Visual mode indicators are drawn in the top right corner of the display, with indicators for Shift, Physical Alt, Control, Alt, Symbol, and Meta mode.
 
+#### Other key mappings
+
+- Physical Alt + Enter is mapped to Tab
+- Holding Shift temporarily enables the touch sensor until Shift is released
+
+- Single click
+	- Call: Control
+	- Berry: Enter Meta mode (see the section on Meta Mode)
+	- Touchpad: Enable optical touch sensor, sending arrow keys. Subsequent clicks send Enter
+	- Back: Escape
+	- End Call: Tmux prefix (customize the prefix in the keymap file)
+
+- Short hold (1 second)
+	- Call: Lock Control
+	- Berry: Display Meta mode overlay (requires `beepy-symbol-overlay` package)
+	- End Call: Open Tmux menu (requires `beepy-tmux-menus` package and Tmux configuration)
+	- Symbol: Display Symbol overlay (requires `beepy-symbol-overlay` package)
+
+- Long hold (5 seconds)
+	- End call: send shutdown signal to Pi
+
 #### Meta mode
 
 Meta mode is a modal layer that assists in rapidly moving the cursor and scrolling with single keypresses. To enter Meta mode, click the touchpad button once. Then, the following keymap is applied, staying in Meta mode until dismissed:
@@ -126,18 +131,14 @@ Meta mode is a modal layer that assists in rapidly moving the cursor and scrolli
     - Why not WASD? This way, you can place your thumb in the middle of all four of these keys, and more fluidly move the cursor without mistyping
 - R: Home, F: End, O: PageUp, P: PageDown
 - Q: Alt+Left (back one word), A: Alt+Right (forward one word)
-- T: Tab (dismisses Meta mode)
-- X: Apply Control to next key (dismisses Meta mode)
-- C: Apply Alt to next key (dismisses Meta mode)
-- 0: Toggle display black/white inversion
+- T: Tab (dismisses meta mode)
+- X: Apply Control to next key (dismisses meta mode)
+- C: Apply Alt to next key (dismisses meta mode)
+- 0: Toggle Sharp display inversion
 - N: Decrease keyboard brightness
 - M: Increase keyboard brightness
 - $: Toggle keyboard backlight
-- Touchpad click (while in Meta mode): Enable touchpad scroll mode (up and down arrrow keys)
-   - Other Meta mode keys will continue to work as normal
-   - Exiting meta mode will also exit touchpad scroll mode
-   - Subsequent clicks of the touchpad will type Enter.
-- Esc: ("Back" button): exit meta mode
+- Esc: (Back button): exit meta mode
 
 Typing any other key while in Meta mode will exit Meta mode and send the key as if it was typed normally.
 
@@ -163,6 +164,7 @@ Write to `/sys/module/beepy_kbd/parameters/<param>` to set, or unload and reload
   - `keys`: default, send arrow keys with the touchpad
   - `mouse`: send mouse input (useful for X11)
 - `touch_shift`: default on. Send touch input while the Shift key is held
+- `sharp_path`: Sharp DRM device to send overlay commands. Default: `/dev/dri/card0`
 
 #### Custom Keymap
 
@@ -179,6 +181,37 @@ Write to `/sys/module/sharp_drm/parameters/<param>` to set, or unload and reload
 - `mono_cutoff`: Consider all pixels with one of R, G, B below this threshold to be black, otherwise white (default 32)
 - `mono_invert`: 0 for white-on-black, 1 for black-on-white
 - `indicators`: 0 to disable mode indicators (default enabled)
+
+### `beepy-tmux-menus`
+
+Fork of `https://github.com/jaclu/tmux-menus` customized for Beepy. Can be trigged with a 1 second hold of the End Call key by adding the following line to `~/.tmux.conf`:
+
+```
+bind-key e run-shell "/usr/share/beepy-tmux-menus/items/main.sh"
+```
+
+#### Example Beepy Tmux configuration
+
+```
+# beepy-kbd sends C-b prefix when pressing End Call
+set-option -g prefix C-b
+bind-key b send-keys C-b
+
+# Double-press End Call to switch to last window
+bind-key C-b last-window
+
+# Short hold End Call for 1 second to open Tmux menu
+bind-key e run-shell "/usr/share/beepy-tmux-menus/items/main.sh"
+set -g @menus_location_x 'R'
+set -g @menus_location_y 'T'
+
+# Default status bar showing battery percentage and clock
+set -g status-position top
+set -g status-left ""
+set -g status-right "█[#(sudo cat /sys/firmware/beepy/battery_percent)] %H:%M"
+set -g status-interval 30
+set -g window-status-separator '█'
+```
 
 ## Cleaning old source builds of drivers
 
@@ -208,4 +241,3 @@ Remove the following lines from `/etc/modules`:
 
 * `bbqX0kbd`
 * `sharp`
-
