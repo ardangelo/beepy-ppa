@@ -178,6 +178,20 @@ SHA256: 2cb78eb019591cac8e12320c227f12ec11796f0f91d8493a3573304279503b27
 Section: embedded
 Description: Beepy symbol menu overlay for sharp-drm
 
+Package: beepy-symbol-overlay
+Version: 1.1-2
+Architecture: armhf
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 1472
+Depends: sharp-drm (>= 1.4)
+Filename: ./beepy-symbol-overlay/beepy-symbol-overlay_1.1-2_armhf.deb
+Size: 446224
+MD5sum: d0c1eff0445028186fab4a448f6c47ad
+SHA1: 9d960ee9b1b79c66fecf205d44febd278186e0b2
+SHA256: 43f8320e698b9b5f6f702e7f80c56587be189182ec60ef9896c1039c97b91cce
+Section: embedded
+Description: Beepy symbol menu overlay for sharp-drm
+
 Package: beepy-symbol-overlay-dbgsym
 Source: beepy-symbol-overlay
 Version: 1.0-1
@@ -213,6 +227,37 @@ Section: debug
 Priority: optional
 Description: debug symbols for beepy-symbol-overlay
 Build-Ids: 5c631845522c1c6525a0e64d4b9dfaf3cd1c783a
+
+Package: beepy-symbol-overlay-dbgsym
+Source: beepy-symbol-overlay
+Version: 1.1-2
+Auto-Built-Package: debug-symbols
+Architecture: armhf
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 840
+Depends: beepy-symbol-overlay (= 1.1-2)
+Filename: ./beepy-symbol-overlay/beepy-symbol-overlay-dbgsym_1.1-2_armhf.deb
+Size: 364220
+MD5sum: f2b2d2c20c0acd9c0e4889a683847974
+SHA1: 3dad9ecc43c245f00ec1fd449b3a2cf0475a97c2
+SHA256: 3b87a35c18117f33d4771f2607df9a9b74b6e32dffd76015453cb6ab6adac96f
+Section: debug
+Priority: optional
+Description: debug symbols for beepy-symbol-overlay
+Build-Ids: f1ff228534a8b4d9cca5b5b8cd0373d5a3f59fcb
+
+Package: beepy-tmux-menus
+Version: 1.0-1
+Architecture: armhf
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 127
+Filename: ./beepy-tmux-menus/beepy-tmux-menus_1.0-1_armhf.deb
+Size: 26200
+MD5sum: c08083bafc808b662ee4913fc1accc60
+SHA1: 44369ae00f4e6f64ffe3a499e13c2104de961f4d
+SHA256: 9db42582b0e7683ad932f3f7dd3ece0c5ceac29adca0d62e28819ae4bf7fe0ea
+Section: embedded
+Description: Beepy tmux menus plugin
 
 Package: sharp-drm
 Version: 1.0-1
