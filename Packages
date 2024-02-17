@@ -65,6 +65,20 @@ SHA256: 749964ac2a42ad7c52ea850f3210d18ad74fcfb0f89f6924d05d43eab9ff73a9
 Section: embedded
 Description: Gomuks Beepy fork
 
+Package: beepy-gomuks
+Version: 0.3-3
+Architecture: armhf
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 19967
+Depends: libolm3
+Filename: ./beepy-gomuks/beepy-gomuks_0.3-3_armhf.deb
+Size: 5188476
+MD5sum: 01a0a6f485fe4f94dc507d73621aa9e9
+SHA1: 70ce26fd329755ece0c04207641a30a1829e266e
+SHA256: 4cea017c46754a72cbe746d19916147eab8fbd29c18cdb9e0c5af18fea1194df
+Section: embedded
+Description: Gomuks Beepy fork
+
 Package: beepy-gomuks-dbgsym
 Source: beepy-gomuks
 Version: 0.3-1
@@ -89,17 +103,35 @@ Version: 0.3-2
 Auto-Built-Package: debug-symbols
 Architecture: armhf
 Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
-Installed-Size: 7784
+Installed-Size: 7578
 Depends: beepy-gomuks (= 0.3-2)
 Filename: ./beepy-gomuks/beepy-gomuks-dbgsym_0.3-2_armhf.deb
-Size: 6586432
-MD5sum: 799a992624f39ee5528da961139acf93
-SHA1: 35204cd92a2d227efbb549bc136fbef453fe081f
-SHA256: 65c917451b9804e83ba78fee7393d1b65866c5567c422bc056aaf38a27439f3d
+Size: 6457800
+MD5sum: d8cf5bedabefc5b6ecd98f08a3a6cd80
+SHA1: be7bbc6fbe15e8b12960b7575c3c17470c6878ec
+SHA256: bde123667feaca4ffc2e224ca6894d738fcc2b2c2cc712a2b5a8ff6e56c86b93
 Section: debug
 Priority: optional
 Description: debug symbols for beepy-gomuks
-Build-Ids: fb4adcb18544a940fa2a5d11fe8df0f244ac31ab
+Build-Ids: 48974a3218159855dbb46da40ba0b8f894e57874
+
+Package: beepy-gomuks-dbgsym
+Source: beepy-gomuks
+Version: 0.3-3
+Auto-Built-Package: debug-symbols
+Architecture: armhf
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 7578
+Depends: beepy-gomuks (= 0.3-3)
+Filename: ./beepy-gomuks/beepy-gomuks-dbgsym_0.3-3_armhf.deb
+Size: 6457376
+MD5sum: abc57a97241086b5adaee9727d82c7c3
+SHA1: fd2e893268187e365689a5ed8cf849cd70945ad7
+SHA256: d66e950beb9c4b910adfc8d2d21ae7848cce722b2baaea1ae91ac9a97f4f73f8
+Section: debug
+Priority: optional
+Description: debug symbols for beepy-gomuks
+Build-Ids: 1a41ba69321cf8024dbe8c085be2d19811d279f9
 
 Package: beepy-gomuks-dbgsym
 Source: beepy-gomuks
