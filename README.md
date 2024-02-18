@@ -27,7 +27,7 @@ SSH into the Pi and install driver packages. The LED will remain green until dri
 	curl -s --compressed "https://ardangelo.github.io/beepy-ppa/KEY.gpg" | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/beepy.gpg >/dev/null
 	sudo curl -s --compressed -o /etc/apt/sources.list.d/beepy.list "https://ardangelo.github.io/beepy-ppa/beepy.list"
 	sudo apt update
-	sudo apt-get -y install beepy-fw sharp-drm beepy-symbol-overlay beepy-kbd beepy-tmux-menus
+	sudo apt-get -y install beepy-fw sharp-drm beepy-symbol-overlay beepy-kbd tmux beepy-tmux-menus beepy-gomuks
 	sudo reboot
 
 The keyboard driver package will run a preinstall check to ensure that the Beepy firmware is compatible with the driver.
