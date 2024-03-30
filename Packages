@@ -29,11 +29,12 @@ Version: 3.4-1
 Architecture: armhf
 Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
 Installed-Size: 145
+Depends: python3
 Filename: ./beepy-fw/beepy-fw_3.4-1_armhf.deb
-Size: 44204
-MD5sum: 8e20844321aebe338c7eb67ada109249
-SHA1: 3cd1eb866bd761bae14a361e3f7c21ffe4057eaa
-SHA256: 80977b1f8d887c256a16ae39811aaca9e4471c1dd38afa7f1ae7c94e44acd34c
+Size: 44220
+MD5sum: c235ec40002f78856ddbd692202dd41f
+SHA1: 9488ca47ab9595c8cc9179c57e85e526fd73f10d
+SHA256: 5b5fbdb8164ca84d1f0dee7fc219d6a80c97269cbf1746f20d3dfe1fd1b507bb
 Section: embedded
 Description: Beepy firmware and installer script
 
@@ -333,6 +334,21 @@ SHA256: 460b60a8da4c57fbccbc564f1730346041680c51d8f09dc0ebbecff59fd14cb8
 Section: embedded
 Description: Keyboard and firmware driver for the Beepy device
 
+Package: beepy-kbd
+Version: 2.9-2
+Architecture: armhf
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 166
+Depends: dkms (>= 2.1.0.0), i2c-tools, beepy-fw (>= 3.0), sharp-drm (>= 1.4)
+Recommends: beepy-symbol-overlay (>= 1.0)
+Filename: ./beepy-kbd/beepy-kbd_2.9-2_armhf.deb
+Size: 34148
+MD5sum: f3043d401285e56029e1a28a411609e0
+SHA1: 7256069c64b0e8449cba0976f1c2f4e9a6b8eb8b
+SHA256: 98398b7548192439bc8dc802b31911fa1bd73d0e02dee2a294e2587712adac1c
+Section: embedded
+Description: Keyboard and firmware driver for the Beepy device
+
 Package: beepy-symbol-overlay
 Version: 1.0-1
 Architecture: armhf
@@ -579,6 +595,20 @@ Size: 18156
 MD5sum: 1a4bf6c6fc5700ddaf05a6448785c505
 SHA1: 65270c6ac6fa5ea3ec8bc57b44694585f340a952
 SHA256: f391380a87eb440a40f9041c3307573acb89c6014f79d44c8454d85fad3ce040
+Section: embedded
+Description: Display driver for the Beepy device
+
+Package: sharp-drm
+Version: 1.5-3
+Architecture: armhf
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 72
+Depends: dkms (>= 2.1.0.0)
+Filename: ./sharp-drm/sharp-drm_1.5-3_armhf.deb
+Size: 18228
+MD5sum: 1454d79aa1466239e8da23102f85d0ce
+SHA1: d289ad0387166127a47428f13826b8e17b48cab6
+SHA256: 56f9c67723a1e52caa41be389452276978f7c97c62b276de9c106f78c2757944
 Section: embedded
 Description: Display driver for the Beepy device
 
