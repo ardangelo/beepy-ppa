@@ -27,7 +27,7 @@ SSH into the Pi and install driver packages. The LED will remain green until dri
 	curl -s --compressed "https://ardangelo.github.io/beepy-ppa/KEY.gpg" | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/beepy.gpg >/dev/null
 	sudo curl -s --compressed -o /etc/apt/sources.list.d/beepy.list "https://ardangelo.github.io/beepy-ppa/beepy.list"
 	sudo apt update
-	sudo apt-get -y install beepy-fw sharp-drm beepy-symbol-overlay beepy-kbd tmux beepy-tmux-menus beepy-gomuks
+	sudo apt-get -y install beepy-fw sharp-drm beepy-symbol-overlay beepy-kbd tmux beepy-tmux-menus beepy-gomuks beepy-poll
 	sudo reboot
 
 The keyboard driver package will run a preinstall check to ensure that the Beepy firmware is compatible with the driver.
@@ -146,8 +146,8 @@ Typing any other key while in Meta mode will exit Meta mode and send the key as 
 
 The following sysfs entries are available under `/sys/firmware/beepy`:
 
-- `led`: 0 to disable LED, 1 to enable. Write-only
-- `led_red`, `led_green`, `led_blue`: set LED color intensity from 0 to 255. Write- only
+- `led`: 0 to disable LED, 1 to enable, 2 to flash, 3 to flash until key pressed. Write-only
+- `led_red`, `led_green`, `led_blue`: set LED color intensity from 0 to 255. Write to `led` to apply color settings. Write- only
 - `keyboard_backlight`: set keyboard brightness from 0 to 255. Write-only
 - `battery_raw`: raw numerical battery level as reported by firmware. Read-only
 - `battery_volts`: battery voltage estimation. Read-only
@@ -212,6 +212,37 @@ set -g status-right "█[#(sudo cat /sys/firmware/beepy/battery_percent)] %H:%M"
 set -g status-interval 30
 set -g window-status-separator '█'
 ```
+
+## `beepy-poll`
+
+Automatic boot polling service. Using the firmware's automatic rewake feature, automatically wake up and run polling scripts on a 15 minute timer.
+
+Install the default polling scripts for your user with `beepy-poll install`. Currently there is a single script installed to `~/.config/beepy-poll.d/50-gomuks` to automatically update Gomuks and print a summary of new messages. You may need to edit this file to set `GOMUKS_ROOT` to the location of the transfered Gomuks directory.
+
+To start polling, run `beepy-poll`.
+
+```
+beepy:~ $ beepy-poll 
+   Shutting down and polling in 15 min.
+```
+
+Upon waking, it will wait up to 10 seconds for network access. If no network is found, it will shut down and poll again after the next interval.
+
+```
+Poll as USER. Press any key to interrupt...
+Sun Mar 31 03:18:56 PM PDT 2024
+Waiting for network... (1/5)
+Running poll script ~/.config/beepy-poll.d/50-gomuks...
+Gomuks: 3 new messages
+* Example room A: 2
+* Example room B: 1
+
+Polling done, repoll in 15 min.
+```
+
+If new messages are received, the Gomuks poller script will flash the LED until a key is pressed, even after shutting down.
+
+You can press a key to interrupt the polling sequence while it is running and continue to a normal login.
 
 ## Cleaning old source builds of drivers
 
