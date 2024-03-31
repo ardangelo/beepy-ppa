@@ -38,6 +38,20 @@ SHA256: 5b5fbdb8164ca84d1f0dee7fc219d6a80c97269cbf1746f20d3dfe1fd1b507bb
 Section: embedded
 Description: Beepy firmware and installer script
 
+Package: beepy-fw
+Version: 3.5-1
+Architecture: armhf
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 135
+Depends: python3
+Filename: ./beepy-fw/beepy-fw_3.5-1_armhf.deb
+Size: 39164
+MD5sum: 4d9e07337c55fe4cf7cb14f96916ae3a
+SHA1: 8dcf1aa9488c02437c0f68c0854069cbd7bec6c4
+SHA256: da13400d92fc8a355e157251bbfc827acda8c0f60541c1c196b30de4e4c38914
+Section: embedded
+Description: Beepy firmware and installer script
+
 Package: beepy-gomuks
 Version: 0.3-1
 Architecture: armhf
@@ -77,6 +91,20 @@ Size: 5188476
 MD5sum: 01a0a6f485fe4f94dc507d73621aa9e9
 SHA1: 70ce26fd329755ece0c04207641a30a1829e266e
 SHA256: 4cea017c46754a72cbe746d19916147eab8fbd29c18cdb9e0c5af18fea1194df
+Section: embedded
+Description: Gomuks Beepy fork
+
+Package: beepy-gomuks
+Version: 0.3-5
+Architecture: armhf
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 22006
+Depends: libolm3
+Filename: ./beepy-gomuks/beepy-gomuks_0.3-5_armhf.deb
+Size: 5327504
+MD5sum: 99e2d618e996f9a8b144ae1902cdb8a6
+SHA1: d09603967d11c85e380f60dc889bbcd5f029dcfa
+SHA256: 3e43002595cad5495a2c82d913a8b09afedc1dd9bebb6bcaff7e2a674b505f5e
 Section: embedded
 Description: Gomuks Beepy fork
 
@@ -133,6 +161,24 @@ Section: debug
 Priority: optional
 Description: debug symbols for beepy-gomuks
 Build-Ids: 1a41ba69321cf8024dbe8c085be2d19811d279f9
+
+Package: beepy-gomuks-dbgsym
+Source: beepy-gomuks
+Version: 0.3-5
+Auto-Built-Package: debug-symbols
+Architecture: armhf
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 8094
+Depends: beepy-gomuks (= 0.3-5)
+Filename: ./beepy-gomuks/beepy-gomuks-dbgsym_0.3-5_armhf.deb
+Size: 6727960
+MD5sum: d74ab7ac5b938102322b1237fea9e1b0
+SHA1: f6222eaddb022bc127b6db419ac6757965e9db68
+SHA256: 893a8d5b7d0d1ba7839ccfaa33e94265cf8fb886a65c243e414d3d60c0315d56
+Section: debug
+Priority: optional
+Description: debug symbols for beepy-gomuks
+Build-Ids: 70427873b6858b590c19a0d80c476467e3b5518e
 
 Package: beepy-gomuks-dbgsym
 Source: beepy-gomuks
@@ -348,6 +394,35 @@ SHA1: 7256069c64b0e8449cba0976f1c2f4e9a6b8eb8b
 SHA256: 98398b7548192439bc8dc802b31911fa1bd73d0e02dee2a294e2587712adac1c
 Section: embedded
 Description: Keyboard and firmware driver for the Beepy device
+
+Package: beepy-kbd
+Version: 2.9-3
+Architecture: armhf
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 166
+Depends: dkms (>= 2.1.0.0), i2c-tools, beepy-fw (>= 3.0), sharp-drm (>= 1.4)
+Recommends: beepy-symbol-overlay (>= 1.0)
+Filename: ./beepy-kbd/beepy-kbd_2.9-3_armhf.deb
+Size: 34184
+MD5sum: 830564c46d63351bd3cd721dc32550c5
+SHA1: 2837b5fce5ef05965269cdc1eb25dd016472d26a
+SHA256: 0856d146bf6d30883c5a77495e3946b07ad89fee26ce0a63263ad87a343886fe
+Section: embedded
+Description: Keyboard and firmware driver for the Beepy device
+
+Package: beepy-poll
+Version: 1.0-1
+Architecture: armhf
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 20
+Depends: screen
+Filename: ./beepy-poll/beepy-poll_1.0-1_armhf.deb
+Size: 2692
+MD5sum: ba4a1a6b71a6a0c2c6ef92769e8faea8
+SHA1: 34fdccbfca039f6300da007bd290ffd6fd1875b9
+SHA256: c498acf842c8ec6605e67cbb389d753d49f186e2bd82706ff012cebb4fc05d6b
+Section: embedded
+Description: Beepy boot polling service
 
 Package: beepy-symbol-overlay
 Version: 1.0-1
