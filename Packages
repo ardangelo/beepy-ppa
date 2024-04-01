@@ -108,6 +108,20 @@ SHA256: 3e43002595cad5495a2c82d913a8b09afedc1dd9bebb6bcaff7e2a674b505f5e
 Section: embedded
 Description: Gomuks Beepy fork
 
+Package: beepy-gomuks
+Version: 0.3-6
+Architecture: armhf
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 21974
+Depends: libolm3
+Filename: ./beepy-gomuks/beepy-gomuks_0.3-6_armhf.deb
+Size: 5329024
+MD5sum: 3b3b8ccd4227e010394b6dcfa2885705
+SHA1: fbead13dfd722e20ed5b8aa5aaa4eb083fb43863
+SHA256: 537d8f1d9629a2da233b2c79747b05ae65501f15834c3c0ea8fb60a60790195e
+Section: embedded
+Description: Gomuks Beepy fork
+
 Package: beepy-gomuks-dbgsym
 Source: beepy-gomuks
 Version: 0.3-1
@@ -179,6 +193,24 @@ Section: debug
 Priority: optional
 Description: debug symbols for beepy-gomuks
 Build-Ids: 70427873b6858b590c19a0d80c476467e3b5518e
+
+Package: beepy-gomuks-dbgsym
+Source: beepy-gomuks
+Version: 0.3-6
+Auto-Built-Package: debug-symbols
+Architecture: armhf
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 8078
+Depends: beepy-gomuks (= 0.3-6)
+Filename: ./beepy-gomuks/beepy-gomuks-dbgsym_0.3-6_armhf.deb
+Size: 6717424
+MD5sum: 75e1971020569c240e2694ea3f76617a
+SHA1: f2c096848885712b06c4cfa6cf68c9d3169cf996
+SHA256: 28fa34bc27a09c6508c1fafb3b994049b166f66938a03be88d286f4323f95f5b
+Section: debug
+Priority: optional
+Description: debug symbols for beepy-gomuks
+Build-Ids: 67b31f214b876ac7feb92cd5cfe1ed6c9dba9f8a
 
 Package: beepy-gomuks-dbgsym
 Source: beepy-gomuks
