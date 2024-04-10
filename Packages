@@ -52,6 +52,20 @@ SHA256: da13400d92fc8a355e157251bbfc827acda8c0f60541c1c196b30de4e4c38914
 Section: embedded
 Description: Beepy firmware and installer script
 
+Package: beepy-fw
+Version: 3.6-1
+Architecture: armhf
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 144
+Depends: python3
+Filename: ./beepy-fw/beepy-fw_3.6-1_armhf.deb
+Size: 40892
+MD5sum: 4fd920f674d375bd17636db004c53386
+SHA1: 29d06fd914254e2a8e4ee04435bdf3e750218460
+SHA256: 338ca44b983386d4b4bd0c83e01da5fdd440c7bdff5ea7070e2f6b61752d90c1
+Section: embedded
+Description: Beepy firmware and installer script
+
 Package: beepy-gomuks
 Version: 0.3-1
 Architecture: armhf
@@ -269,6 +283,21 @@ Size: 332728
 MD5sum: 42b2e05050cb7457cb67d6bf34e01fdd
 SHA1: ea9876c13ea16e543b51b1b0ed2a307887c32e7c
 SHA256: 5003cd5a02ceb56223d50ea3be2f14e5b528acf63323d104a7883fba5e592b55
+Section: embedded
+Description: Keyboard and firmware driver for the Beepy device
+
+Package: beepy-kbd
+Version: 2.10-1
+Architecture: armhf
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 159
+Depends: dkms (>= 2.1.0.0), i2c-tools, beepy-fw (>= 3.0), sharp-drm (>= 1.4)
+Recommends: beepy-symbol-overlay (>= 1.0)
+Filename: ./beepy-kbd/beepy-kbd_2.10-1_armhf.deb
+Size: 31660
+MD5sum: 0f6495f837cd83ba2c1cb4d56b6ae6b5
+SHA1: 79177b039b3691c6f02eb68c7e5560ddb2a71b7c
+SHA256: 4d00a8f474328c2627d82f95cfa36514ff90371f03c721541730e72e1f4c7063
 Section: embedded
 Description: Keyboard and firmware driver for the Beepy device
 
