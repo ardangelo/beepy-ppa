@@ -302,6 +302,21 @@ Section: embedded
 Description: Keyboard and firmware driver for the Beepy device
 
 Package: beepy-kbd
+Version: 2.11-1
+Architecture: armhf
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 160
+Depends: dkms (>= 2.1.0.0), i2c-tools, beepy-fw (>= 3.0), sharp-drm (>= 1.4)
+Recommends: beepy-symbol-overlay (>= 1.0)
+Filename: ./beepy-kbd/beepy-kbd_2.11-1_armhf.deb
+Size: 31928
+MD5sum: 910166ab71ed4079fb4d35a4afb3e16c
+SHA1: 4766f9568b86973d08f6db2378140cb2beb8f879
+SHA256: 9744d15050ff1710e331d71d8c5dceb2456f198cf372625f0f29e7daa1b28e50
+Section: embedded
+Description: Keyboard and firmware driver for the Beepy device
+
+Package: beepy-kbd
 Version: 2.2-2
 Architecture: armhf
 Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
@@ -482,6 +497,20 @@ Size: 2692
 MD5sum: ba4a1a6b71a6a0c2c6ef92769e8faea8
 SHA1: 34fdccbfca039f6300da007bd290ffd6fd1875b9
 SHA256: c498acf842c8ec6605e67cbb389d753d49f186e2bd82706ff012cebb4fc05d6b
+Section: embedded
+Description: Beepy boot polling service
+
+Package: beepy-poll
+Version: 1.1-1
+Architecture: armhf
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 31
+Depends: screen
+Filename: ./beepy-poll/beepy-poll_1.1-1_armhf.deb
+Size: 3980
+MD5sum: d2270ec509a10239e4996ab6a13ba0eb
+SHA1: 0a41afd4fac55fa3bf10bdfbfe2592821a13531d
+SHA256: 94769b045254c580f7fb83f3545845bae8392feab18082f393155052ccf7e93e
 Section: embedded
 Description: Beepy boot polling service
 
