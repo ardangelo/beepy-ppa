@@ -508,9 +508,9 @@ Installed-Size: 31
 Depends: screen
 Filename: ./beepy-poll/beepy-poll_1.1-1_armhf.deb
 Size: 3988
-MD5sum: 0f3b5f8933901a092e0ab824a3bfa82b
-SHA1: c1e393ef52bffac3997ca3abd87dc65f0d0ac212
-SHA256: d89c853f8afc097f4f7f060a4d368916ff4053f619749130bd5fc9875940788c
+MD5sum: 2944a62bbbbd3277bc27ab0029b2b08c
+SHA1: 4a4bc673c4bf5efd0fef8219240c47304101e49e
+SHA256: f21fb0e551f52b489c2af1e29a470d52b91c6f79e2d281f56d2c19913a2e65bd
 Section: embedded
 Description: Beepy boot polling service
 
