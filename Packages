@@ -507,10 +507,10 @@ Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
 Installed-Size: 31
 Depends: screen
 Filename: ./beepy-poll/beepy-poll_1.1-1_armhf.deb
-Size: 3980
-MD5sum: d2270ec509a10239e4996ab6a13ba0eb
-SHA1: 0a41afd4fac55fa3bf10bdfbfe2592821a13531d
-SHA256: 94769b045254c580f7fb83f3545845bae8392feab18082f393155052ccf7e93e
+Size: 3988
+MD5sum: 0f3b5f8933901a092e0ab824a3bfa82b
+SHA1: c1e393ef52bffac3997ca3abd87dc65f0d0ac212
+SHA256: d89c853f8afc097f4f7f060a4d368916ff4053f619749130bd5fc9875940788c
 Section: embedded
 Description: Beepy boot polling service
 
