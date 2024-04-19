@@ -514,6 +514,20 @@ SHA256: f21fb0e551f52b489c2af1e29a470d52b91c6f79e2d281f56d2c19913a2e65bd
 Section: embedded
 Description: Beepy boot polling service
 
+Package: beepy-poll
+Version: 1.1-2
+Architecture: armhf
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 31
+Depends: screen
+Filename: ./beepy-poll/beepy-poll_1.1-2_armhf.deb
+Size: 4040
+MD5sum: be5d4e8da1de6f881471b856505a5def
+SHA1: 275b7298d24b434f28c1c4ee6a006c34d15a2a0c
+SHA256: 4c810b0e2eb2845a71443d0e19b69671336764810baaa5503f53fd88dbfd21ae
+Section: embedded
+Description: Beepy boot polling service
+
 Package: beepy-symbol-overlay
 Version: 1.0-1
 Architecture: armhf
