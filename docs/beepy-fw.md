@@ -5,11 +5,21 @@ layout: default
 
 # Beepy Firmware
 
+- [User Guide](#user-guide)
+  - [Flashing firmware directly](#flashing-firmware-directly)
+  - [Firmware update utility](#firmware-update-utility)
+  - [Working with the keyboard driver](#working-with-the-keyboard-driver)
+- [Developer Reference](#developer-reference)
+  - [Building from source](#building-from-source)
+  - [Key values](#key-values)
+  - [Power draw readings](#power-draw-readings)
+  - [Register reference](#register-reference)
+
 ## User Guide
 
-In the Beepy device, separate from the Raspberry Pi running Linux, there is an RP2040 microcontroller chip. This chip controls basic hardware input and output functions, including keyboard and touchpad input. The firmware discussed here runs directly on the RP2040. It cooperates with the Beepy keyboard driver [beepy-kbd](docs/beepy-kbd.html) to provide key input and other functionality to Linux running on the Raspberry Pi.
+In the Beepy device, separate from the Raspberry Pi running Linux, there is an RP2040 microcontroller chip. This chip controls basic hardware input and output functions, including keyboard and touchpad input. The firmware discussed here runs directly on the RP2040. It cooperates with the Beepy keyboard driver [beepy-kbd](beepy-kbd.html) to provide key input and other functionality to Linux running on the Raspberry Pi.
 
-See keyboard driver reference [beepy-kbd](docs/beepy-kbd.html) for more information on keymaps.
+See keyboard driver reference [beepy-kbd](beepy-kbd.html) for more information on keymaps.
 
 ### Flashing firmware directly
 
@@ -29,7 +39,7 @@ If you're setting up a new Beepy device, it's recommended to flash the firmware 
 
 7. Copy the firmware image onto the presented drive just like a normal file. When copying is complete, Beepy will automatically flash and reboot with the new firmware.
 
-If you're setting up a new device, you can proceed with the rest of the steps in the [quick start guide](quick-start.html).
+If you're setting up a new device, you can proceed with the rest of the steps in the [quick start guide](../quick-start.html).
 
 ### Firmware update utility
 
@@ -79,7 +89,7 @@ In this case, update the `beepy-fw` driver and run `sudo update-beepy-fw` (see [
 
 ## Developer Reference
 
-This section is intended for developers to reference for working directly with the firmware over I2C, at a lower level than the keyboard driver. For changing firmware settings from Linux through control files, see the keyboard driver reference [beepy-kbd](docs/beepy-kbd.html).
+This section is intended for developers to reference for working directly with the firmware over I2C, at a lower level than the keyboard driver. For changing firmware settings from Linux through control files, see the keyboard driver reference [beepy-kbd](beepy-kbd.html).
 
 This firmware is based off of the `i2c_puppet` firmware for keyboard interaction and communication. It adds several Beepy-specific features and improvements, including sticky modifier keys, real-time-clock support, self-update capability, deep sleep mode, and touchpad tuning.
 
@@ -112,7 +122,7 @@ In the `build` directory, you will find the files `i2c_puppet.uf2` and `app/firm
     sed -i '1s;^;+Beepy dev build\n;' beepy.hex
     cat beepy.hex | sudo tee /sys/firmware/beepy/update_fw
 
-See keyboard driver reference [beepy-kbd](docs/beepy-kbd.html) for more information on using `/sys/firmware/beepy/update_fw`.
+See keyboard driver reference [beepy-kbd](beepy-kbd.html) for more information on using `/sys/firmware/beepy/update_fw`.
 
 ### Key values
 
@@ -127,7 +137,7 @@ Call is mapped to Control. The Berry button is mapped to `KEY_PROPS`. Clicking t
 
 Physical alt does not send an actual Alt key, but remaps the output scancodes to the range 135 to 161 in QWERTY order. This should be combined with a keymap for proper symbol output. This allows symbols to be customized without rebuilding the firmware, as well as proper use of the actual Alt key.
 
-See keyboard driver reference [beepy-kbd](docs/beepy-kbd.html) for more information on keymaps.
+See keyboard driver reference [beepy-kbd](beepy-kbd.html) for more information on keymaps.
 
 ### Power draw readings
 
@@ -453,7 +463,7 @@ Color settings are applied after [`REG_LED`](#0x20-reg_id_led) is written.
 
 Read-write, 1 byte.
 
-Write to shut down the Pi, then power-on in that many minutes. Useful for polling services in conjunction with [`REG_ID_STARTUP_REASON`](#0x2e-reg_id_startup_reason), such as with the [beepy-poll](docs/beepy-poll.html) service.
+Write to shut down the Pi, then power-on in that many minutes. Useful for polling services in conjunction with [`REG_ID_STARTUP_REASON`](#0x2e-reg_id_startup_reason), such as with the [beepy-poll](beepy-poll.html) service.
 
 #### `0x25` `REG_ID_SHUTDOWN_GRACE`
 
@@ -509,7 +519,7 @@ Write-only, 1 byte.
 
 Write `1` to commit the values written to RTC registers to the real-time clock. Due to the Beepy hardware design, RTC settings are lost on power off of the RP2040 via power switch, or when entering deep sleep.
 
-The keyboard driver [beepy-kbd](docs/beepy-kbd.html) will update the RP2040 RTC with network time settings when available.
+The keyboard driver [beepy-kbd](beepy-kbd.html) will update the RP2040 RTC with network time settings when available.
 
 #### `0x2D` `REG_ID_DRIVER_STATE`
 
@@ -530,7 +540,7 @@ Contains the reason why the Pi was booted. Useful for polling services in conjun
 * `0` RP2040 initialized and booted Pi
 * `1` Power button held to turn Pi back on
 * `2` Rewake triggered from [`REG_ID_REWAKE_MINS`](#0x24-reg_id_rewake_mins)
-* `3` During rewake polling, `0` was written to [`REG_ID_REWAKE_MINS`](#0x24-reg_id_rewake_mins). This allows the [beepy-poll](docs/beepy-poll.html) service to cancel the poll and proceeded with a full boot
+* `3` During rewake polling, `0` was written to [`REG_ID_REWAKE_MINS`](#0x24-reg_id_rewake_mins). This allows the [beepy-poll](beepy-poll.html) service to cancel the poll and proceeded with a full boot
 
 #### `0x30` `REG_ID_UPDATE_DATA`
 

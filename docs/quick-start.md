@@ -3,9 +3,7 @@ title: Beepy Quick Start
 layout: default
 ---
 
-# Beepy package repository
-
-{:toc}
+# Beepy Quick Start
 
 ## Updating firmware from 2.X
 
