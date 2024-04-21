@@ -23,7 +23,7 @@ Holding the Sym key for more than one second will both enable Symbol entry mode,
 
 Pressing the Berry key once will enter "Meta" mode, a shortcut mode that remaps the physical alpha keys to shortcuts and cursor movement keys such as arrow keys, Home, and End. While in Meta mode, a Star indicator will appear at the top-right of the screen.
 
-Similar to symbol entry mode, holding the Berry key for more than one second will both enable Meta mode, and open this symbol overlay utility and provide a visual keymap for Meta mode functions. Pressing the Back key will exit Meta mode. For more information on Meta mode keymappings, see [https://github.com/ardangelo/beepberry-keyboard-driver/README.md](documentation for the Beepy keyboard driver).
+Similar to symbol entry mode, holding the Berry key for more than one second will both enable Meta mode, and open this symbol overlay utility and provide a visual keymap for Meta mode functions. Pressing the Back key will exit Meta mode. For more information on Meta mode keymappings, see [documentation for the Beepy keyboard driver](https://github.com/ardangelo/beepberry-keyboard-driver#meta-mode).
 
 ## Developer Reference
 
