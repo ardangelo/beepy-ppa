@@ -5,23 +5,25 @@ layout: default
 
 # Beepy Quick Start
 
-## Updating firmware from 2.X
+## Flashing firmware directly
 
-* [Download the latest firmware image](https://github.com/ardangelo/beepberry-rp2040/releases/latest/download/i2c_puppet.uf2)
-* Slide the power switch off (left if facing up)
-* Connect the Beepy to your computer via USB-C
-* While holding the "End Call" key (top right on the keypad), slide the power switch on
-* The Beepy will present itself as a USB mass storage device. Copy the firmware image into the drive and it will reboot with the new firmware
+If you're setting up a new Beepy device, it's recommended to flash the firmware directly from the latest firmware release.
 
-## Updating firmware from 3.0 on-device
+1. [Download the latest firmware image](https://github.com/ardangelo/beepberry-rp2040/releases/latest/download/i2c_puppet.uf2)
 
-Starting with firmware version 3.0 and `beepy-kbd` 2.4, the package `beepy-fw` can be used to update firmware directly from Beepy.
-If you have a firmware version older than 3.0 installed, please update manually by flashing the `uf2` image over USB.
+2. Turn the power switch off. With the device facing up, slide the power switch in the bottom-left hand corner to the left.
 
-`beepy-fw` provides a script `/sbin/update-beepy-fw` and a copy of the firmware.
-After installing `beepy-fw`, you can install a newer firmware by running the interactive script
+![Diagram showing direction of power switch](assets/beepy-switch-off.png)
 
-	/sbin/update-beepy-fw
+3. Connect the Beepy to your computer via USB-C.
+
+4. Locate the "End Call" key. It is the rightmost key on the top row of four function keys. 
+
+5. While holding the "End Call" key, slide the power switch back on to enter firmware flash mode. In firmware flash mode, the LED will light up, and the Beepy will present itself as a USB mass storage device on your computer.
+
+7. Copy the firmware image onto the presented drive just like a normal file. When copying is complete, Beepy will automatically flash and reboot with the new firmware.
+
+More firmware configuration and update information: [Beepy Firmware](beepy-fw.html).
 
 ## Adding to APT and installing drivers
 
