@@ -20,7 +20,7 @@ layout: default
 
 If you are installing your own Raspberry Pi Zero or any other SBC, make sure all the mounting pins are properly aligned to each hole before tightening the screws. **If you cannot see the pin through a header hole, then it is not properly mounted.** Move the board around until all the pins "click" into place. Skip this step if the Pi is already pre-installed.
 
-![Beepy Pi installation diagram](assets/beepy-header-mount-diagram.jpg)
+<img src="assets/beepy-header-mount-diagram.jpg" width="50%" alt="Beepy Pi installation diagram">
 
 The USB-C port at the bottom powers and charges the Beepy. **Do not power the Raspberry Pi Zero through its Micro-USB port (PWR IN).**
 
@@ -43,7 +43,7 @@ If you're setting up a new Beepy device, it's recommended to flash the firmware 
 
 2. Turn the power switch off. With the device facing up, slide the power switch in the bottom-left hand corner to the left.
 
-![Diagram showing direction of power switch](assets/beepy-switch-off.png)
+<img src="assets/beepy-switch-off.png" width="25%" alt="Diagram showing direction of power switch">
 
 3. Connect the Beepy to your computer via USB-C.
 
@@ -59,7 +59,7 @@ More firmware configuration and update information: [Beepy Firmware](beepy-fw.ht
 
 The display driver automatically adds terminal configuration lines to the Raspberry Pi `cmdline.txt` file at `/boot/firmware/cmdline.txt`. It configures the Linux framebuffer, including font size. You can edit this file from your computer by inserting the microSD card and editing the file on the boot partition at `/boot/firmware/cmdline.txt`.
 
-The `cmdline.txt` option `fbcon=font:VGA8x8` configures default font to a usable size, resulting in dimensions of 30 rows and 50 columns. This can be changed to `font:VGA8x16` for a larger font, but you may have rendering problems with such small terminal dimensions. More fonts and options for the `fbcon` module can be found at <https://www.kernel.org/doc/Documentation/fb/fbcon.txt>.
+The `cmdline.txt` option `fbcon=font:VGA8x8` configures a default font size of 30 rows and 50 columns. This can be changed to `font:VGA8x16` for a larger font, but you may have rendering problems with such small terminal dimensions. More fonts and options for the `fbcon` module can be found at <https://www.kernel.org/doc/Documentation/fb/fbcon.txt>.
 
 ## First-boot setup
 
@@ -73,19 +73,36 @@ Once the display driver is configured, you will see scrolling white-on-black tex
 
 The first dialog configures the default account's username and password.
 
-Due to the limited number of keys, there are different shortcuts and modes mapped by the keyboard driver. For a full explanation on key mapping, see [Beepy keyboard user guide](beepy-kbd.html#user-guide).
+Due to the limited number of keys, there are different shortcuts and modes mapped by the keyboard driver. For a full explanation on key mapping, see the [Beepy keyboard user guide](beepy-kbd.html#user-guide).
 
 Basic key mapping summary,
 
-> The alternate symbols printed directly on the keys are sent by pressing the `Physical Alt` key on the bottom left corner of the keyboard, then pressing the key on which the desired symbol is printed. While `Physical Alt` is active, you will see an `a` indicator in the top right corner of the screen: ![Physical Alt indicator](assets/kbd-alt.png). The combination `Physical Alt` + `Enter` is also mapped to `Tab`. `Physical Alt` is a "[sticky modifier key](beepy-kbd.html#sticky-modifier-keys)".
+> The alternate symbols printed directly on the keys are sent by pressing the `Physical Alt` key on the bottom left corner of the keyboard, then pressing the key on which the desired symbol is printed. While `Physical Alt` is active, you will see an `a` indicator in the top right corner of the screen: <img src="assets/kbd-phys-alt.png" width="14" alt="Physical Alt indicator">. The combination `Physical Alt` + `Enter` is also mapped to `Tab`. `Physical Alt` is a "[sticky modifier key](beepy-kbd.html#sticky-modifier-keys)".
 
-> For additional symbols not printed directly on the keys, use the `Symbol` key on the bottom row of the keyboard. While `Symbol` is active, you will see an `S` indicator in the top right of the screen: ![Symbol indicator](assets/kbd-altgr.png). Internally, `Symbol` sends AltGr (Right Alt), which is mapped to more symbols via the keymap file at `/usr/share/kbd/keymaps/beepy-kbd.map`. `Symbol` is a "[sticky modifier key](beepy-kbd.html#sticky-modifier-keys)". You can view the Symbol key map by holding the `Symbol` key for 1 second. Modifying the keymap file will also update the Symbol key map displayed; below is the default key map:
+> For additional symbols not printed directly on the keys, use the `Symbol` key on the bottom row of the keyboard. While `Symbol` is active, you will see an `S` indicator in the top right of the screen: <img src="assets/kbd-altgr.png" width="14" alt="Symbol indicator">. Internally, `Symbol` sends AltGr (Right Alt), which is mapped to more symbols via the keymap file at `/usr/share/kbd/keymaps/beepy-kbd.map`. `Symbol` is a "[sticky modifier key](beepy-kbd.html#sticky-modifier-keys)". You can view the Symbol key map by holding the `Symbol` key for 1 second. Modifying the keymap file will also update the Symbol key map displayed; below is the default key map:
 
 > ![Default Symbol key map](assets/overlay-symbol.png)
 
+> From left to right, the top row of the Beepy keyboard has the following keys:
+
+> * "Call", a phone facing up.
+>    * Single click: Enter Control key ([sticky modifier](beepy-kbd.html#sticky-modifier-keys)).
+>    * Short hold: Lock Control key ([sticky modifier](beepy-kbd.html#sticky-modifier-keys)).
+> * "Berry": a collection of sections shaped like a fruit.
+>    * Single click: Enter [Meta mode](beepy-kbd.html#meta-mode).
+>    * Short hold (1s): Display [Meta mode reference overlay](beepy-kbd.html#meta-mode).
+> * "Touchpad": pressing the touchpad sensor will click and produce a key event.
+>     * Single click: by default, enable [touchpad mode](beepy-kbd.html#touchpad-mode), sending arrow keys. If touchpad mode is already on, a single click will send `Enter`.
+> * "Back": an arrow looping back onto itself.
+>     * Single click: send `Escape`. Commonly used to exit menus in utilities.
+> * "End Call": a phone facing down, with a line underneath.
+>     * Single click: Send the [tmux prefix](beepy-tmux-menus.html). Prefix is [configurable in the driver keymap](beepy-kbd.html#custom-keymaps).
+>     * Short hold (1s): Open the [tmux menu](beepy-tmux-menus.html). If the Pi has been shut down, a short hold will turn the Pi back on.
+>     * Long hold (5s): send a shutdown signal to the Pi.
+
 Meta mode summary,
 
-> Meta mode is a modal layer that assists in rapidly moving the cursor and scrolling with single keypresses. To enter Meta mode, click the `Berry` key once. The Meta mode indicator ![Meta mode indicator](assets/kbd-meta.png) will appear in the top right corner of the screen.
+> Meta mode is a modal layer that assists in rapidly moving the cursor and scrolling with single keypresses. To enter Meta mode, click the `Berry` key once. The Meta mode indicator <img src="assets/kbd-meta.png" width="14" alt="Meta mode indicator"> will appear in the top right corner of the screen.
 
 > You can view the Meta mode key map by holding the `Berry` key for 1 second:
 
@@ -93,13 +110,13 @@ Meta mode summary,
 
 Touchpad summary,
 
-> Press the touchpad itself to turn on touchpad mode, and start sending arrow keys when you move your finger across the touchpad. While active, you will see the touchpad indicator ![Touchpad indicator](assets/kbd-touch.png) in the top-right corner of the screen.
+> Press the touchpad itself to turn on touchpad mode, and start sending arrow keys when you move your finger across the touchpad. While active, you will see the touchpad indicator <img src="assets/kbd-touch.png" width="14" alt="Touchpad indicator"> in the top-right corner of the screen.
 
 > Clicking the touchpad itself again while the touchpad is active will send `Enter`. Pressing the `Back` key will exit touchpad mode.
 
-> You can also hold the `Shift` key to temporarily turn on the touchpad until the `Shift` key is released. You will see the Shift indicator ![Shift indicator](assets/kbd-shift.png) instead of the touch indicator.
+> You can also hold the `Shift` key to temporarily turn on the touchpad until the `Shift` key is released. You will see the Shift indicator <img src="assets/kbd-shift.png" width="14" alt="Shift indicator"> instead of the touch indicator.
 
-> If you release the `Shift` key *without* using the touchpad, you will instead get the [sticky modifier behavior](#sticky-modifier-keys) of applying Shift to the next alpha keypress. In this case, the ![Shift indicator](assets/kbd-shift.png) will remain on the screen. Press and release the `Shift` key again to un-stick the modifier and hide the indicator.
+> If you release the `Shift` key *without* using the touchpad, you will instead get the [sticky modifier behavior](#sticky-modifier-keys) of applying Shift to the next alpha keypress. In this case, the Shift indicator will remain on the screen. Press and release the `Shift` key again to un-stick the modifier and hide the indicator.
 
 ### Idle service configuration
 
@@ -125,15 +142,15 @@ At this point, initial setup is completed.
 
 Driver guides and configuration:
 
-* [beepy-kbd](docs/beepy-kbd.html): Keyboard driver and firmware interface
-* [sharp-drm](docs/sharp-drm.html): Display driver and console font configuration
-* [beepy-fw](docs/beepy-fw.html): Device firmware, updating and configuration
+* [beepy-kbd](beepy-kbd.html): Keyboard driver and firmware interface
+* [sharp-drm](sharp-drm.html): Display driver and console font configuration
+* [beepy-fw](beepy-fw.html): Device firmware, updating and configuration
 
 Preinstalled Beepy software:
 
-* [beepy-gomuks](docs/beepy-gomuks.html): Gomuks Beeper client customized for Beepy
-* [beepy-tmux-menus](docs/beepy-tmux-menus.html): Tmux plugin for visually managing Tmux
-* [beepy-poll](docs/beepy-poll.html): OS service to wake up and run polling scripts
+* [beepy-gomuks](beepy-gomuks.html): Gomuks Beeper client customized for Beepy
+* [beepy-tmux-menus](beepy-tmux-menus.html): Tmux plugin for visually managing Tmux
+* [beepy-poll](beepy-poll.html): OS service to wake up and run polling scripts
 
 Documentation for these packages is also available in manpage format on-device. Run `man package` e.g. `man beepy-kbd` for keyboard documentation.
 
