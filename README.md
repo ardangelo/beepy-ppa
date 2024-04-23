@@ -2,7 +2,7 @@
 
 Hosting packages and documentation for the Beepy Raspbian fork.
 
-See the [quick start page](docs/quick-start.html) to set up your new Beepy device with the Beepy Raspbian distribution.
+See the [quick start page](docs/quick-start.html) to set up your new Beepy device with the [Beepy Raspbian distribution](https://github.com/ardangelo/beepy-gen/releases/).
 
 ## Package Documentation
 
