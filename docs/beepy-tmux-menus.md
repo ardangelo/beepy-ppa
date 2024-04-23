@@ -41,10 +41,16 @@ bind-key e run-shell "/usr/share/beepy-tmux-menus/items/main.sh"
 The full default configuration for Beepy Tmux includes settings to switch to last window after pressing End Call (Tmux prefix) twice, as well as display a top status bar with battery status:
 
 ```
-# Keybinds
+# beepy-kbd sends C-b prefix when pressing End Call
 bind-key b send-keys C-b
+
+# Double-press End Call to switch to last window
 bind-key C-b last-window
+
+# Double-press End Call to switch to last window
 bind-key e run-shell "/usr/share/beepy-tmux-menus/items/main.sh"
+set -g @menus_location_x 'R'
+set -g @menus_location_y 'T'
 
 # Status bar
 set -g status-position top
@@ -52,8 +58,6 @@ set -g status-left ""
 set -g status-right "_ [#(cat /sys/firmware/beepy/battery_percent)] %H:%M"
 set -g status-interval 30
 set -g window-status-separator '_'
-set -g @menus_location_x 'R'
-set -g @menus_location_y 'T'
 ```
 
 ### Application Menu

@@ -5,9 +5,39 @@ layout: default
 
 # Beepy Quick Start
 
-## Flashing firmware directly
+- [Hardware setup](#hardware-setup)
+- [Create a bootable SD card](#create-a-bootable-sd-card)
+- [Flashing firmware](#flashing-firmware)
+- [Pre-boot setup](#preboot-setup)
+- [First-boot setup](#firstboot-setup)
+  - [Initial user account configuration](#initial-user-account-configuration)
+  - [Idle service configuration](#idle-service-configuration)
+  - [Wireless network configuration](#wireless-network-configuration)
+- [Applications and services](#applications-and-services)
 
-If you're setting up a new Beepy device, it's recommended to flash the firmware directly from the latest firmware release.
+
+## Hardware setup
+
+If you are installing your own Raspberry Pi Zero or any other SBC, make sure all the mounting pins are properly aligned to each hole before tightening the screws. **If you cannot see the pin through a header hole, then it is not properly mounted.** Move the board around until all the pins "click" into place. Skip this step if the Pi is already pre-installed.
+
+![Beepy Pi installation diagram](assets/beepy-header-mount-diagram.jpg)
+
+The USB-C port at the bottom powers and charges the Beepy. **Do not power the Raspberry Pi Zero through its Micro-USB port (PWR IN).**
+
+## Create a bootable SD card
+
+Beepy Raspbian is a customized version of Raspbian, the official Debian distribution for the Raspberry Pi. Beepy Raspbian is an all-in-one image for Beepy, with device drivers, optimizations, and OS services preinstalled and configured for you.
+
+Once you install Beepy Raspbian, you can manage your Beepy just like a normal Debian Linux device.
+
+Download the latest release of the Beepy Raspbian distribution here: <https://github.com/ardangelo/beepy-gen/releases/>. Unzip the image to obtain an image file `sdcard.img`. Use your disk imager of choice to flash the entire image to a microSD card.
+
+* Mac OS / Linux: `sudo dd if=2024-04-23-Beepy.img of=/dev/sdX`
+* Windows: [Rufus disk imaging tool](https://rufus.ie/en/)
+
+## Flashing firmware
+
+If you're setting up a new Beepy device, it's recommended to flash the firmware directly from the latest firmware release. After your Beepy is set up, you can apply future firmware updates on-device using a simple utility.
 
 1. [Download the latest firmware image](https://github.com/ardangelo/beepberry-rp2040/releases/latest/download/i2c_puppet.uf2)
 
@@ -25,255 +55,98 @@ If you're setting up a new Beepy device, it's recommended to flash the firmware 
 
 More firmware configuration and update information: [Beepy Firmware](beepy-fw.html).
 
-## Adding to APT and installing drivers
+## Pre-boot setup
 
-SSH into the Pi and install driver packages. The LED will remain green until drivers are installed and the system has rebooted.
+The display driver automatically adds terminal configuration lines to the Raspberry Pi `cmdline.txt` file at `/boot/firmware/cmdline.txt`. It configures the Linux framebuffer, including font size. You can edit this file from your computer by inserting the microSD card and editing the file on the boot partition at `/boot/firmware/cmdline.txt`.
 
-	curl -s --compressed "https://ardangelo.github.io/beepy-ppa/KEY.gpg" | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/beepy.gpg >/dev/null
-	sudo curl -s --compressed -o /etc/apt/sources.list.d/beepy.list "https://ardangelo.github.io/beepy-ppa/beepy.list"
-	sudo apt update
-	sudo apt-get -y install beepy-fw sharp-drm beepy-symbol-overlay beepy-kbd tmux beepy-tmux-menus beepy-gomuks beepy-poll
-	sudo reboot
+The `cmdline.txt` option `fbcon=font:VGA8x8` configures default font to a usable size, resulting in dimensions of 30 rows and 50 columns. This can be changed to `font:VGA8x16` for a larger font, but you may have rendering problems with such small terminal dimensions. More fonts and options for the `fbcon` module can be found at <https://www.kernel.org/doc/Documentation/fb/fbcon.txt>.
 
-The keyboard driver package will run a preinstall check to ensure that the Beepy firmware is compatible with the driver.
+## First-boot setup
 
-If the installed firmware is detected as incompatible, the installation will be canceled.
+Insert the microSD card into the Raspberry Pi, and insert a USB-C cable into the Beepy's charge port to keep it charged during setup. Turn the power switch on. With the device facing up, slide the power switch in the bottom-left hand corner to the right.
 
-A link to a compatible firmware release will be output as part of the error message.
+The screen will turn on, but display static. The notification LED in the top-left hand corner will turn solid green. This will continue for about 20 seconds, depending on the speed of your microSD card. During this first boot, Raspbian is resizing the main partition to fill the free space on the card.
 
-## Package listing
+Once the display driver is configured, you will see scrolling white-on-black text on the screen, and the notification LED will turn off. Beepy will reboot again, this time to a series of dialogs.
 
-### `beepy-fw`
+### Initial user account configuration
 
-`beepy-fw` provides a script `update-beepy-fw` and a copy of the firmware.
-After installing `beepy-fw`, you can install a newer firmware by running as root
+The first dialog configures the default account's username and password.
 
-	/sbin/update-beepy-fw
+Due to the limited number of keys, there are different shortcuts and modes mapped by the keyboard driver. For a full explanation on key mapping, see [Beepy keyboard user guide](beepy-kbd.html#user-guide).
 
-Newer firmware versions will be listed along with a prompt to select the version to install.
+Basic key mapping summary,
 
-	Installed firmware: 3.0
-	Newer firmware in /usr/lib/beepy-firmware:
-	[ 0] 3.1: beepy_3.1.hex
-	Enter number of newer firmware to install: _
+> The alternate symbols printed directly on the keys are sent by pressing the `Physical Alt` key on the bottom left corner of the keyboard, then pressing the key on which the desired symbol is printed. While `Physical Alt` is active, you will see an `a` indicator in the top right corner of the screen: ![Physical Alt indicator](assets/kbd-alt.png). The combination `Physical Alt` + `Enter` is also mapped to `Tab`. `Physical Alt` is a "[sticky modifier key](beepy-kbd.html#sticky-modifier-keys)".
 
-If the update completes successfully, the system will be rebooted.
-There is a 30 second delay (configurable at `/sys/module/beepy_kbd/parameters/shutdown_grace` to allow the operating system to cleanly shut down before the Pi is powered off.
-The firmware is flashed right before the Pi boots back up, so please wait until the system reboots on its own before removing power.
+> For additional symbols not printed directly on the keys, use the `Symbol` key on the bottom row of the keyboard. While `Symbol` is active, you will see an `S` indicator in the top right of the screen: ![Symbol indicator](assets/kbd-altgr.png). Internally, `Symbol` sends AltGr (Right Alt), which is mapped to more symbols via the keymap file at `/usr/share/kbd/keymaps/beepy-kbd.map`. `Symbol` is a "[sticky modifier key](beepy-kbd.html#sticky-modifier-keys)". You can view the Symbol key map by holding the `Symbol` key for 1 second. Modifying the keymap file will also update the Symbol key map displayed; below is the default key map:
 
-If the update fails or is otherwise interrupted, the firmware will not be installed. You can retry the firmware installation by re-running the utility.
+> ![Default Symbol key map](assets/overlay-symbol.png)
 
-If your firmware is up to date, no newer firmware will be listed.
+Meta mode summary,
 
-	Installed firmware: 3.1
-	Newer firmware in /usr/lib/beepy-firmware:
-		(None found)
+> Meta mode is a modal layer that assists in rapidly moving the cursor and scrolling with single keypresses. To enter Meta mode, click the `Berry` key once. The Meta mode indicator ![Meta mode indicator](assets/kbd-meta.png) will appear in the top right corner of the screen.
 
-All available firmware images can be listed with
+> You can view the Meta mode key map by holding the `Berry` key for 1 second:
 
-	/sbin/update-beepy-fw --list
+> ![Meta mode key map](assets/overlay-meta.png)
 
-	Beepy firmware updater
-	Installed firmware: 3.0
-	Installed firmware in /usr/lib/beepy-firmware:
-		 3.0: beepy_3.0.hex
+Touchpad summary,
 
-	Older firmware in /usr/lib/beepy-firmware:
-		 2.9: beepy_2.9.hex
+> Press the touchpad itself to turn on touchpad mode, and start sending arrow keys when you move your finger across the touchpad. While active, you will see the touchpad indicator ![Touchpad indicator](assets/kbd-touch.png) in the top-right corner of the screen.
 
-A custom second stage firmware image can be flashed with
+> Clicking the touchpad itself again while the touchpad is active will send `Enter`. Pressing the `Back` key will exit touchpad mode.
 
-	/sbin/update-beepy-fw path_to_custom_firmware.hex
+> You can also hold the `Shift` key to temporarily turn on the touchpad until the `Shift` key is released. You will see the Shift indicator ![Shift indicator](assets/kbd-shift.png) instead of the touch indicator.
 
-Second stage firmware files start with a header line followed by the firmware image in Intel HEX format.
+> If you release the `Shift` key *without* using the touchpad, you will instead get the [sticky modifier behavior](#sticky-modifier-keys) of applying Shift to the next alpha keypress. In this case, the ![Shift indicator](assets/kbd-shift.png) will remain on the screen. Press and release the `Shift` key again to un-stick the modifier and hide the indicator.
 
-	+My custom Beepy firmware
-	:020000041000EA
-	...
+### Idle service configuration
 
-### `beepy-kbd`
+Next, you will be presented with an option to either enable or disable the `beepy-idle` service. Press `Alt + Enter` to switch between `Yes` and `No` options.
 
-#### Alt and Sym modifiers
+If enabled, this service will automatically shut down the Pi and deep sleep the RP2040 controller to preserve battery life.
 
-The alternate symbols printed directly on the Beepy keys are triggered by pressing the physical Alt key, then the key on which the symbol is printed.
+The Pi will not shut down unless it has been 5 minutes since the last keypress, or if Tmux is running an active foreground process.
 
-For additional symbols not printed directly on the keys, the Sym key is used. Sym sends AltGr (Right Alt), which is mapped to more symbols via the keymap file at `/usr/share/kbd/keymaps/beepy-kbd.map`.
+The timeout and allowed processes can be configured by editing the file at `/etc/beepy-idle.conf`. By default, if Tmux is running any process other than `bash` or `gomuks`, idle will be inhibited.
 
-#### Sticky modifier keys
+More information: [`beepy-idle` service](beepy-poll.html#beepy-idle)
 
-The keyboard driver supports sticky modifier keys. Holding a modifier key (Shift, Alt, Sym) while typing an alpha keys will apply the modifier to all alpha keys until the modifier is released.
+### Wireless network configuration
 
-One press and release of the modifier will enter sticky mode, applying the modifier to the next alpha key only. If the same modifier key is pressed and released again in sticky mode, it will be canceled.
+Two informational message boxes will be displayed with quick summaries on how to enter symbols and input arrow keys. For a more complete explanation than can be fit in a small message box, see the [Beepy keyboard user guide](beepy-kbd.html#user-guide).
 
-Visual mode indicators are drawn in the top right corner of the display, with indicators for Shift, Physical Alt, Control, Alt, Symbol, and Meta mode.
+`nmtui` will open to configure a wireless network. `nmtui` is a text-based configuration program for the NetworkManager service. Use the up and down arrow keys (accessible using [Meta mode](beepy-kbd.html#meta-mode) or with the [touhcpad](beepy-kbd.html#touchpad-mode)) to move between networks, and `Enter` to select a network to connect to. After a connection is established, press the `Back` key (mapped to `Escape`) to exit `nmtui`.
 
-#### Other key mappings
+## Applications and services
 
-- Physical Alt + Enter is mapped to Tab
-- Holding Shift temporarily enables the touch sensor until Shift is released
+At this point, initial setup is completed.
 
-- Single click
-	- Call: Control
-	- Berry: Enter Meta mode (see the section on Meta Mode)
-	- Touchpad: Enable optical touch sensor, sending arrow keys. Subsequent clicks send Enter
-	- Back: Escape
-	- End Call: Tmux prefix (customize the prefix in the keymap file)
+Driver guides and configuration:
 
-- Short hold (1 second)
-	- Call: Lock Control
-	- Berry: Display Meta mode overlay (requires `beepy-symbol-overlay` package)
-	- End Call: Open Tmux menu (requires `beepy-tmux-menus` package and Tmux configuration)
-	- Symbol: Display Symbol overlay (requires `beepy-symbol-overlay` package)
+* [beepy-kbd](docs/beepy-kbd.html): Keyboard driver and firmware interface
+* [sharp-drm](docs/sharp-drm.html): Display driver and console font configuration
+* [beepy-fw](docs/beepy-fw.html): Device firmware, updating and configuration
 
-- Long hold (5 seconds)
-	- End call: send shutdown signal to Pi
+Preinstalled Beepy software:
 
-#### Meta mode
+* [beepy-gomuks](docs/beepy-gomuks.html): Gomuks Beeper client customized for Beepy
+* [beepy-tmux-menus](docs/beepy-tmux-menus.html): Tmux plugin for visually managing Tmux
+* [beepy-poll](docs/beepy-poll.html): OS service to wake up and run polling scripts
 
-Meta mode is a modal layer that assists in rapidly moving the cursor and scrolling with single keypresses. To enter Meta mode, click the touchpad button once. Then, the following keymap is applied, staying in Meta mode until dismissed:
+Documentation for these packages is also available in manpage format on-device. Run `man package` e.g. `man beepy-kbd` for keyboard documentation.
 
-- E: up, S: down, W: left, D: right
-    - Why not WASD? This way, you can place your thumb in the middle of all four of these keys, and more fluidly move the cursor without mistyping
-- R: Home, F: End, O: PageUp, P: PageDown
-- Q: Alt+Left (back one word), A: Alt+Right (forward one word)
-- T: Tab (dismisses meta mode)
-- X: Apply Control to next key (dismisses meta mode)
-- C: Apply Alt to next key (dismisses meta mode)
-- 0: Toggle Sharp display inversion
-- N: Decrease keyboard brightness
-- M: Increase keyboard brightness
-- $: Toggle keyboard backlight
-- Esc: (Back button): exit meta mode
+## Beepy Discord
 
-Typing any other key while in Meta mode will exit Meta mode and send the key as if it was typed normally.
+[Discord Invite](https://discord.gg/QERrSferdF)
 
-#### `sysfs` Interface
+### Matrix Bridge
 
-The following sysfs entries are available under `/sys/firmware/beepy`:
+[#beepy-general](https://matrix.to/#/#beepberry-general:beeper.com)
 
-- `led`: 0 to disable LED, 1 to enable, 2 to flash, 3 to flash until key pressed. Write-only
-- `led_red`, `led_green`, `led_blue`: set LED color intensity from 0 to 255. Write to `led` to apply color settings. Write- only
-- `keyboard_backlight`: set keyboard brightness from 0 to 255. Write-only
-- `battery_raw`: raw numerical battery level as reported by firmware. Read-only
-- `battery_volts`: battery voltage estimation. Read-only
-- `battery_percent`: battery percentage estimation. Read-only
+[#beepy-dev](https://matrix.to/#/#beepberry-dev:beeper.com)
 
-#### Module parameters
+[#beepy-apps](https://matrix.to/#/#beepberry-apps:beeper.com)
 
-Write to `/sys/module/beepy_kbd/parameters/<param>` to set, or unload and reload the module with `beepy-kbd param=val`.
-
-- `touch_act`: one of `click` or `always`
-  - `click`: default, will disable touchpad until the touchpad button is clicked
-  - `always`: touchpad always on, swiping sends touch input, clicking sends Enter
-- `touch_as`: one of `keys` or `mouse`
-  - `keys`: default, send arrow keys with the touchpad
-  - `mouse`: send mouse input (useful for X11)
-- `touch_shift`: default on. Send touch input while the Shift key is held
-- `sharp_path`: Sharp DRM device to send overlay commands. Default: `/dev/dri/card0`
-
-#### Custom Keymap
-
-The Alt and Sym keymaps and the Tmux prefix sent by the "Berry" key can be edited in the file `/usr/share/kbd/keymaps/beepy-kbd.map`. To reapply the keymap without rebooting, run `loadkeys /usr/share/kbd/keymaps/beepy-kbd.map`.
-
-### `sharp-drm`
-
-Linux DRM Driver for 2.7" Sharp Memory LCD
-
-#### Module parameters
-
-Write to `/sys/module/sharp_drm/parameters/<param>` to set, or unload and reload the module with `sharp-drm param=val`.
-
-- `mono_cutoff`: Consider all pixels with one of R, G, B below this threshold to be black, otherwise white (default 32)
-- `mono_invert`: 0 for white-on-black, 1 for black-on-white
-- `indicators`: 0 to disable mode indicators (default enabled)
-
-### `beepy-tmux-menus`
-
-Fork of `https://github.com/jaclu/tmux-menus` customized for Beepy. Can be trigged with a 1 second hold of the End Call key by adding the following line to `~/.tmux.conf`:
-
-```
-bind-key e run-shell "/usr/share/beepy-tmux-menus/items/main.sh"
-```
-
-#### Example Beepy Tmux configuration
-
-```
-# beepy-kbd sends C-b prefix when pressing End Call
-set-option -g prefix C-b
-bind-key b send-keys C-b
-
-# Double-press End Call to switch to last window
-bind-key C-b last-window
-
-# Short hold End Call for 1 second to open Tmux menu
-bind-key e run-shell "/usr/share/beepy-tmux-menus/items/main.sh"
-set -g @menus_location_x 'R'
-set -g @menus_location_y 'T'
-
-# Default status bar showing battery percentage and clock
-set -g status-position top
-set -g status-left ""
-set -g status-right "█[#(sudo cat /sys/firmware/beepy/battery_percent)] %H:%M"
-set -g status-interval 30
-set -g window-status-separator '█'
-```
-
-## `beepy-poll`
-
-Automatic boot polling service. Using the firmware's automatic rewake feature, automatically wake up and run polling scripts on a 15 minute timer.
-
-Install the default polling scripts for your user with `beepy-poll install`. Currently there is a single script installed to `~/.config/beepy-poll.d/50-gomuks` to automatically update Gomuks and print a summary of new messages. You may need to edit this file to set `GOMUKS_ROOT` to the location of the transfered Gomuks directory.
-
-To start polling, run `beepy-poll`.
-
-```
-beepy:~ $ beepy-poll 
-   Shutting down and polling in 15 min.
-```
-
-Upon waking, it will wait up to 10 seconds for network access. If no network is found, it will shut down and poll again after the next interval.
-
-```
-Poll as USER. Press any key to interrupt...
-Sun Mar 31 03:18:56 PM PDT 2024
-Waiting for network... (1/5)
-Running poll script ~/.config/beepy-poll.d/50-gomuks...
-Gomuks: 3 new messages
-* Example room A: 2
-* Example room B: 1
-
-Polling done, repoll in 15 min.
-```
-
-If new messages are received, the Gomuks poller script will flash the LED until a key is pressed, even after shutting down.
-
-You can press a key to interrupt the polling sequence while it is running and continue to a normal login.
-
-## Cleaning old source builds of drivers
-
-If you have not installed previous versions of the drivers from source, disregard this section.
-
-The `bbqX0kbd` driver has been renamed to `beepy-kbd`, and `sharp` to `sharp-drm`.
-
-Driver packages will detect if one of these old modules is installed and cancel installation of the package.
-
-Remove the following files:
-
-* `/lib/modules/<uname>/extra/bbqX0kbd.ko*`
-* `/lib/modules/<uname>/extra/sharp.ko*`
-* `/boot/overlays/i2c-bbqX0kbd.dtbo`
-* `/boot/overlays/sharp.dtbo`
-
-Rebuild the module list:
-
-* `depmod -a`
-
-Remove the following lines from `/boot/config.txt`:
-
-* `dtoverlay=bbqX0kbd,irq_pin=4`
-* `dtoverlay=sharp`
-
-Remove the following lines from `/etc/modules`:
-
-* `bbqX0kbd`
-* `sharp`
+[#beepy-hw](https://matrix.to/#/#beepberry-hw:beeper.com)

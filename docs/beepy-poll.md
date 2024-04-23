@@ -21,7 +21,9 @@ If woken back up on this timer, the service will wait for network access, then r
     Waiting for NetworkManager... (1/5)
     Waiting for network connection... (1/5)
     Running ~/.config/beepy-poll.d/50-gomuks
-        (Gomuks poller output)
+    Gomuks: 3 new messages
+    * Example room A: 2
+    * Example room B: 1
 
 If no network connection is found, then the poller will not run the scripts, and schedule another rewake in 15 minutes.
 
