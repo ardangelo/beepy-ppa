@@ -176,6 +176,34 @@ SHA256: 0f1348cbea14fbc8be1edffbe86662ad3fe2d8f7be446e54f5991d7525446ba4
 Section: embedded
 Description: Beepy firmware and installer script
 
+Package: beepy-fw
+Version: 3.7-1
+Architecture: arm64
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 156
+Depends: python3
+Filename: ./beepy-fw/beepy-fw_3.7-1_arm64.deb
+Size: 49452
+MD5sum: 07ec84b603ee96b6ed8ba39846a6ae67
+SHA1: 6dbb062fc515147182a924fb563fd713a4879959
+SHA256: 4654801e2fb7f03533d9f5098fbb2cfaad0841f325776ca0403bc1c377aeb0fc
+Section: embedded
+Description: Beepy firmware and installer script
+
+Package: beepy-fw
+Version: 3.7-1
+Architecture: armhf
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 156
+Depends: python3
+Filename: ./beepy-fw/beepy-fw_3.7-1_armhf.deb
+Size: 49460
+MD5sum: 43cbb2390e7c8f3e467f97de67545913
+SHA1: b6c809cf45633f84a097061a6391a35e7e34bd65
+SHA256: fbf7cfd796e1fe2e9bae3b6e61b7a7b3bb0b9826cd02a88d435f73e0ba9cac6a
+Section: embedded
+Description: Beepy firmware and installer script
+
 Package: beepy-gomuks
 Version: 0.3-1
 Architecture: armhf
@@ -2184,20 +2212,6 @@ Size: 21256
 MD5sum: 60074bec93803445fc532d1b4555a49b
 SHA1: 416f4302e2fbbcc5d67c7fff278c82dd09a237ce
 SHA256: f6d0f24911c8d7621f688346d9a322beb6136f445478088eb573f823cdfb0f87
-Section: embedded
-Description: Display driver for the Beepy device
-
-Package: sharp-drm
-Version: 1.5-6
-Architecture: arm64
-Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
-Installed-Size: 80
-Depends: dkms (>= 2.1.0.0)
-Filename: ./sharp-drm/sharp-drm_1.5-6_arm64.deb
-Size: 21516
-MD5sum: cb6196a2d058d272b578ecbaae3324b6
-SHA1: a810e93d221591c2da7ad4e7cfc1af0d851efaeb
-SHA256: 6f898d84e63b7832458d7973531002c6158f81237ad4f4d60e70ed7586243eaf
 Section: embedded
 Description: Display driver for the Beepy device
 

@@ -382,9 +382,9 @@ See [`REG_CFG`](#0x02-reg_id_cfg) for additional settings.
 * `3` `CF2_AUTO_OFF` When [driver state unloaded](#0x2d-reg_id_driver_state) set to unloaded, wait for `REG_ID_SHUTDOWN_GRACE` seconds, then enter deep sleep
 * `2` `CF2_USB_MOUSE_ON` Send trackpad events over USB
 * `1` `CF2_USB_KEYB_ON` Send keyboard events over USB
-* `0` `CF2_TOUCH_INT` Generate interrupt for trackpad event
+* `0` `CF2_TOUCH_INT` Generate interrupt for trackpad event. Should only be enabled when ready to accept touch input, otherwise touch events will accumulate and be sent all at once when interrupts are activated
 
-Default value: `CF2_TOUCH_INT | CF2_AUTO_OFF`
+Default value: `0` (cleared)
 
 #### `0x15` `REG_ID_TOX`
 
