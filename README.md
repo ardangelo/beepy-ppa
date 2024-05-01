@@ -18,10 +18,19 @@ Documentation for these packages is also available in manpage format. Run `man p
 
 ## Installing on stock Raspbian
 
-If you are using your own Raspbian image, you can also manually install packages from this repository. This is not necessary when using the [Beepy Raspbian distribution](https://github.com/ardangelo/beepy-gen/releases/).
+If you are using your own 32-bit `armhf` or 64-bit `arm64` Raspbian Bookworm image, you can also manually install packages from this repository.
+This is not necessary when using the [Beepy Raspbian distribution](https://github.com/ardangelo/beepy-gen/releases/).
 
-    curl -s --compressed "https://ardangelo.github.io/beepy-ppa/KEY.gpg" | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/beepy.gpg >/dev/null
+Ensure you have a swapfile of at least 512MB,
+
+	( . /etc/dphys-swapfile && if (( CONF_SWAPSIZE < 512 )); then \
+        sudo sed -i 's/^CONF_SWAPSIZE=.*/CONF_SWAPSIZE=512/' /etc/dphys-swapfile \
+     && sudo reboot; fi )
+
+Then, add the Beepy PPA key, update, and install packages,
+
     sudo curl -s --compressed -o /etc/apt/sources.list.d/beepy.list "https://ardangelo.github.io/beepy-ppa/beepy.list"
+    curl -s --compressed "https://ardangelo.github.io/beepy-ppa/KEY.gpg" | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/beepy.gpg >/dev/null
     sudo apt update
     sudo apt-get -y install beepy-fw sharp-drm beepy-symbol-overlay beepy-kbd tmux beepy-tmux-menus beepy-gomuks beepy-poll
     sudo reboot

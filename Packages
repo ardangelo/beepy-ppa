@@ -140,6 +140,34 @@ Architecture: armhf
 Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
 Installed-Size: 156
 Depends: python3
+Filename: ./_site/beepy-fw/beepy-fw_3.6-2_armhf.deb
+Size: 49388
+MD5sum: 17d03264b1fb092402660adfea18559b
+SHA1: 730ef4c3e5efcc5600d225b60ab7711d3b1cc070
+SHA256: 0f1348cbea14fbc8be1edffbe86662ad3fe2d8f7be446e54f5991d7525446ba4
+Section: embedded
+Description: Beepy firmware and installer script
+
+Package: beepy-fw
+Version: 3.6-2
+Architecture: arm64
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 156
+Depends: python3
+Filename: ./beepy-fw/beepy-fw_3.6-2_arm64.deb
+Size: 49388
+MD5sum: 936e98eed51c522303e0df91ef261e51
+SHA1: 5d67092aefc787592fc7171d80d67b3abfb7aee8
+SHA256: 948c94d16c800de56a333d907ca32333755ee7158edfcf6276e98a516311daa4
+Section: embedded
+Description: Beepy firmware and installer script
+
+Package: beepy-fw
+Version: 3.6-2
+Architecture: armhf
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 156
+Depends: python3
 Filename: ./beepy-fw/beepy-fw_3.6-2_armhf.deb
 Size: 49388
 MD5sum: 17d03264b1fb092402660adfea18559b
@@ -285,6 +313,34 @@ Size: 5329024
 MD5sum: 3b3b8ccd4227e010394b6dcfa2885705
 SHA1: fbead13dfd722e20ed5b8aa5aaa4eb083fb43863
 SHA256: 537d8f1d9629a2da233b2c79747b05ae65501f15834c3c0ea8fb60a60790195e
+Section: embedded
+Description: Gomuks Beepy fork
+
+Package: beepy-gomuks
+Version: 0.3-7
+Architecture: armhf
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 21979
+Depends: libolm3
+Filename: ./_site/beepy-gomuks/beepy-gomuks_0.3-7_armhf.deb
+Size: 5329704
+MD5sum: fcd1bb343e50651952dacca3d8c4508c
+SHA1: d91894f3bf67b7a7c9a710d4f2e7c475244aec66
+SHA256: 7c72286fc735108f34f1961d12c0e7bc925212058f4a6a66a9522690a13cbe7d
+Section: embedded
+Description: Gomuks Beepy fork
+
+Package: beepy-gomuks
+Version: 0.3-7
+Architecture: arm64
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 21979
+Depends: libolm3
+Filename: ./beepy-gomuks/beepy-gomuks_0.3-7_arm64.deb
+Size: 5329704
+MD5sum: 019e3535041995a619b5be44ec1d1f00
+SHA1: f1d2a269cfb8573919357b8ad48965a57dea4a22
+SHA256: b13e05194b46a11cd75bd29c30a3f4f98f12084be8fea502b9ea7ade462908fa
 Section: embedded
 Description: Gomuks Beepy fork
 
@@ -477,6 +533,42 @@ Size: 6717424
 MD5sum: 75e1971020569c240e2694ea3f76617a
 SHA1: f2c096848885712b06c4cfa6cf68c9d3169cf996
 SHA256: 28fa34bc27a09c6508c1fafb3b994049b166f66938a03be88d286f4323f95f5b
+Section: debug
+Priority: optional
+Description: debug symbols for beepy-gomuks
+Build-Ids: 67b31f214b876ac7feb92cd5cfe1ed6c9dba9f8a
+
+Package: beepy-gomuks-dbgsym
+Source: beepy-gomuks
+Version: 0.3-7
+Auto-Built-Package: debug-symbols
+Architecture: armhf
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 8078
+Depends: beepy-gomuks (= 0.3-7)
+Filename: ./_site/beepy-gomuks/beepy-gomuks-dbgsym_0.3-7_armhf.deb
+Size: 6717560
+MD5sum: aa92b88dbabb41032c84aa25b59d7569
+SHA1: 3fa35dd658f2fed4daa07cb52a51481212068fd6
+SHA256: 9d3aebdb8bc82d7e022f5508e4f3b9f38011d668269e3c7b07e8fd69e13b6098
+Section: debug
+Priority: optional
+Description: debug symbols for beepy-gomuks
+Build-Ids: 67b31f214b876ac7feb92cd5cfe1ed6c9dba9f8a
+
+Package: beepy-gomuks-dbgsym
+Source: beepy-gomuks
+Version: 0.3-7
+Auto-Built-Package: debug-symbols
+Architecture: arm64
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 8078
+Depends: beepy-gomuks (= 0.3-7)
+Filename: ./beepy-gomuks/beepy-gomuks-dbgsym_0.3-7_arm64.deb
+Size: 6717560
+MD5sum: f1b5a1cc68db43109fd557615df5dfe9
+SHA1: 5af98e2603b16171d14b4a49605ba1cc729976d6
+SHA256: 609df63788efbe5fae3330115e2fbf166f105c8d9ad17fcf6365ce2a2f9ac0fe
 Section: debug
 Priority: optional
 Description: debug symbols for beepy-gomuks
@@ -717,11 +809,56 @@ Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
 Installed-Size: 184
 Depends: dkms (>= 2.1.0.0), i2c-tools, beepy-fw (>= 3.0), sharp-drm (>= 1.4)
 Recommends: beepy-symbol-overlay (>= 1.0)
+Filename: ./_site/beepy-kbd/beepy-kbd_2.11-3_armhf.deb
+Size: 42156
+MD5sum: d61df8f3ea2070778afae4b338f5b973
+SHA1: 3c49b71335dcb441a58b4eaed1edc65d805e6bae
+SHA256: 4c82bb55be9536c459e4be685b710e1c15c9fc188b5b463cee7a31437c012e4d
+Section: embedded
+Description: Keyboard and firmware driver for the Beepy device
+
+Package: beepy-kbd
+Version: 2.11-3
+Architecture: armhf
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 184
+Depends: dkms (>= 2.1.0.0), i2c-tools, beepy-fw (>= 3.0), sharp-drm (>= 1.4)
+Recommends: beepy-symbol-overlay (>= 1.0)
 Filename: ./beepy-kbd/beepy-kbd_2.11-3_armhf.deb
 Size: 42156
 MD5sum: d61df8f3ea2070778afae4b338f5b973
 SHA1: 3c49b71335dcb441a58b4eaed1edc65d805e6bae
 SHA256: 4c82bb55be9536c459e4be685b710e1c15c9fc188b5b463cee7a31437c012e4d
+Section: embedded
+Description: Keyboard and firmware driver for the Beepy device
+
+Package: beepy-kbd
+Version: 2.11-4
+Architecture: arm64
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 187
+Depends: dkms (>= 2.1.0.0), i2c-tools, beepy-fw (>= 3.0), sharp-drm (>= 1.4)
+Recommends: beepy-symbol-overlay (>= 1.0)
+Filename: ./beepy-kbd/beepy-kbd_2.11-4_arm64.deb
+Size: 42504
+MD5sum: b509beb7d12a6798396496f2898394c1
+SHA1: 1298dd34332969f078f7e3f174f6ed4df41e85b7
+SHA256: 615e87cafa6b1917cd0d37176bf09cb5054d3927999aa0ee6ef4fd182b148a58
+Section: embedded
+Description: Keyboard and firmware driver for the Beepy device
+
+Package: beepy-kbd
+Version: 2.11-4
+Architecture: armhf
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 187
+Depends: dkms (>= 2.1.0.0), i2c-tools, beepy-fw (>= 3.0), sharp-drm (>= 1.4)
+Recommends: beepy-symbol-overlay (>= 1.0)
+Filename: ./beepy-kbd/beepy-kbd_2.11-4_armhf.deb
+Size: 42508
+MD5sum: cd09fbd9dcc362b523a11b4002e39ac3
+SHA1: 41c9bdf35e1ee3de93fed00c8945e2000daa3490
+SHA256: a393006b39c3d0265dac9c40610d5d3c668e18a2ee7bc737b6953f48453dc066
 Section: embedded
 Description: Keyboard and firmware driver for the Beepy device
 
@@ -1155,6 +1292,34 @@ Architecture: armhf
 Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
 Installed-Size: 36
 Depends: screen
+Filename: ./_site/beepy-poll/beepy-poll_1.1-3_armhf.deb
+Size: 6992
+MD5sum: 7b4b9c6e1989a22af104038e9745c1c2
+SHA1: 4e740bc6973df8d32142e8a2c23443e9548c8d1f
+SHA256: 2ad37179014acce26ca84836b1fe2553d495294540333d7cd7dbc3262c2b34c3
+Section: embedded
+Description: Beepy boot polling service
+
+Package: beepy-poll
+Version: 1.1-3
+Architecture: arm64
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 36
+Depends: screen
+Filename: ./beepy-poll/beepy-poll_1.1-3_arm64.deb
+Size: 6992
+MD5sum: 3759566b38692325096d5726e9fb697e
+SHA1: 13b10948eae91f1ebff95ccdaec7e28cd307ca3c
+SHA256: 1c36beef4f2e974cb12932e68bebcf37c4d71e09cbeab5d74e29f2c601938768
+Section: embedded
+Description: Beepy boot polling service
+
+Package: beepy-poll
+Version: 1.1-3
+Architecture: armhf
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 36
+Depends: screen
 Filename: ./beepy-poll/beepy-poll_1.1-3_armhf.deb
 Size: 6992
 MD5sum: 7b4b9c6e1989a22af104038e9745c1c2
@@ -1300,6 +1465,34 @@ Size: 462872
 MD5sum: 3ae63496675cb337bd3c86252cf86297
 SHA1: 4affc5446b9a58b46bb38076f93cc3013c778d3a
 SHA256: c650a536b0e3a935d37d2d0222432932056fcba51ca3e74b6a88573bd6effed7
+Section: embedded
+Description: Beepy symbol menu overlay for sharp-drm
+
+Package: beepy-symbol-overlay
+Version: 1.2-3
+Architecture: armhf
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 1076
+Depends: sharp-drm (>= 1.4)
+Filename: ./_site/beepy-symbol-overlay/beepy-symbol-overlay_1.2-3_armhf.deb
+Size: 464380
+MD5sum: 7033fe99c8a53e31c1edd3bfbdf3d166
+SHA1: 066c3807d9ababe603a9f07a22d845c2993a4f1e
+SHA256: 0de4a3af073f3070351c33732b06e9dfceda8fde7bfb9827789a5abac7c53afc
+Section: embedded
+Description: Beepy symbol menu overlay for sharp-drm
+
+Package: beepy-symbol-overlay
+Version: 1.2-3
+Architecture: arm64
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 1634
+Depends: sharp-drm (>= 1.4)
+Filename: ./beepy-symbol-overlay/beepy-symbol-overlay_1.2-3_arm64.deb
+Size: 491860
+MD5sum: 0c107cee37f7270310da41eff07394e2
+SHA1: d20e865109a02fa3f8583cc7689fe798d3fb3fd9
+SHA256: c17f29a1fc38d60fd2541ba0a352e164f43a619cd4ca5f905d45f575fd7fe120
 Section: embedded
 Description: Beepy symbol menu overlay for sharp-drm
 
@@ -1505,6 +1698,42 @@ Architecture: armhf
 Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
 Installed-Size: 855
 Depends: beepy-symbol-overlay (= 1.2-3)
+Filename: ./_site/beepy-symbol-overlay/beepy-symbol-overlay-dbgsym_1.2-3_armhf.deb
+Size: 374552
+MD5sum: 509c1e2c648af7150d0e31c94f1d79fb
+SHA1: f777bbf477271eddb7b46b791fb27651372b6c3c
+SHA256: 717178c5b92c40d980002e067360feb9274898f37656003ed4baf074398ca3a6
+Section: debug
+Priority: optional
+Description: debug symbols for beepy-symbol-overlay
+Build-Ids: eb5c4b0a836a0dc6a67098d03c52b9e75fc859c0
+
+Package: beepy-symbol-overlay-dbgsym
+Source: beepy-symbol-overlay
+Version: 1.2-3
+Auto-Built-Package: debug-symbols
+Architecture: arm64
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 863
+Depends: beepy-symbol-overlay (= 1.2-3)
+Filename: ./beepy-symbol-overlay/beepy-symbol-overlay-dbgsym_1.2-3_arm64.deb
+Size: 368272
+MD5sum: bd54e9b9ab525f6e8abec9ed3544ea07
+SHA1: ebf111aa0214b301d2406faa971664f40b39e60c
+SHA256: 741e9ced41c2466434bc0885fd9623d4ebb40203db2384e539b6be3f6d8fafa2
+Section: debug
+Priority: optional
+Description: debug symbols for beepy-symbol-overlay
+Build-Ids: 3fc17a3e00aa048a625b2ca2b7ba24af7936569d
+
+Package: beepy-symbol-overlay-dbgsym
+Source: beepy-symbol-overlay
+Version: 1.2-3
+Auto-Built-Package: debug-symbols
+Architecture: armhf
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 855
+Depends: beepy-symbol-overlay (= 1.2-3)
 Filename: ./beepy-symbol-overlay/beepy-symbol-overlay-dbgsym_1.2-3_armhf.deb
 Size: 374552
 MD5sum: 509c1e2c648af7150d0e31c94f1d79fb
@@ -1538,6 +1767,32 @@ Size: 26200
 MD5sum: c08083bafc808b662ee4913fc1accc60
 SHA1: 44369ae00f4e6f64ffe3a499e13c2104de961f4d
 SHA256: 9db42582b0e7683ad932f3f7dd3ece0c5ceac29adca0d62e28819ae4bf7fe0ea
+Section: embedded
+Description: Beepy tmux menus plugin
+
+Package: beepy-tmux-menus
+Version: 1.0-2
+Architecture: armhf
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 131
+Filename: ./_site/beepy-tmux-menus/beepy-tmux-menus_1.0-2_armhf.deb
+Size: 28068
+MD5sum: 16c639a839902e492295f0312ac47b20
+SHA1: 9c980fca7092e09b31e60ae5d2994f3776264530
+SHA256: c672c759f3f27000a1050c912d49e072b2f0e185df10463cd65e16bf0c58c046
+Section: embedded
+Description: Beepy tmux menus plugin
+
+Package: beepy-tmux-menus
+Version: 1.0-2
+Architecture: arm64
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 131
+Filename: ./beepy-tmux-menus/beepy-tmux-menus_1.0-2_arm64.deb
+Size: 28068
+MD5sum: a1d57ac01b685a3142d75c759ae82da0
+SHA1: d0c286644143f44158845c2d46cc5cee6339a912
+SHA256: 2ec0f55d970f4cf95f644089ede71ac61538e8f5c8f3036b4e8dc81ebc8b2c56
 Section: embedded
 Description: Beepy tmux menus plugin
 
@@ -1924,11 +2179,67 @@ Architecture: armhf
 Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
 Installed-Size: 79
 Depends: dkms (>= 2.1.0.0)
-Filename: ./sharp-drm/sharp-drm_1.5-6_armhf.deb
+Filename: ./_site/sharp-drm/sharp-drm_1.5-6_armhf.deb
 Size: 21256
 MD5sum: 60074bec93803445fc532d1b4555a49b
 SHA1: 416f4302e2fbbcc5d67c7fff278c82dd09a237ce
 SHA256: f6d0f24911c8d7621f688346d9a322beb6136f445478088eb573f823cdfb0f87
+Section: embedded
+Description: Display driver for the Beepy device
+
+Package: sharp-drm
+Version: 1.5-6
+Architecture: arm64
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 80
+Depends: dkms (>= 2.1.0.0)
+Filename: ./sharp-drm/sharp-drm_1.5-6_arm64.deb
+Size: 21516
+MD5sum: cb6196a2d058d272b578ecbaae3324b6
+SHA1: a810e93d221591c2da7ad4e7cfc1af0d851efaeb
+SHA256: 6f898d84e63b7832458d7973531002c6158f81237ad4f4d60e70ed7586243eaf
+Section: embedded
+Description: Display driver for the Beepy device
+
+Package: sharp-drm
+Version: 1.5-6
+Architecture: armhf
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 80
+Depends: dkms (>= 2.1.0.0)
+Filename: ./sharp-drm/sharp-drm_1.5-6_armhf.deb
+Size: 21392
+MD5sum: a40efc032697c9a7146c3fbd688b78d8
+SHA1: 7b6ebd8ab129519aeb3ed7553e879fccb7b4c560
+SHA256: 9bbd3ea642cc34d8d6076fef56d77b657d10cb9f0d01c7a0947cad6e69c0e0d6
+Section: embedded
+Description: Display driver for the Beepy device
+
+Package: sharp-drm
+Version: 1.5-7
+Architecture: arm64
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 80
+Depends: dkms (>= 2.1.0.0)
+Filename: ./sharp-drm/sharp-drm_1.5-7_arm64.deb
+Size: 21576
+MD5sum: 9158ee346aaafee65982ad7df7ae6c35
+SHA1: e9aacea81de4239e29eae99bd817b2fa1788cf49
+SHA256: 85a469b7c2bff5564ef7721a6d775b6351182c0bdf3e6088fc6e64284c0bbe55
+Section: embedded
+Description: Display driver for the Beepy device
+
+Package: sharp-drm
+Version: 1.5-7
+Architecture: armhf
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 80
+Depends: dkms (>= 2.1.0.0)
+Filename: ./sharp-drm/sharp-drm_1.5-7_armhf.deb
+Size: 21580
+MD5sum: c3f1cb24be3a49ad226709d7c2350464
+SHA1: 1fafbc5bc6f9713466fcd43b1d056f218405e6a4
+SHA256: 9fec1d00d8b214b84931943f1afcfc55988b1d098a262277a3f4ff9143049e2c
 Section: embedded
 Description: Display driver for the Beepy device
 
