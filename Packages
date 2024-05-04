@@ -204,6 +204,34 @@ SHA256: fbf7cfd796e1fe2e9bae3b6e61b7a7b3bb0b9826cd02a88d435f73e0ba9cac6a
 Section: embedded
 Description: Beepy firmware and installer script
 
+Package: beepy-fw
+Version: 3.8-1
+Architecture: arm64
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 156
+Depends: python3
+Filename: ./beepy-fw/beepy-fw_3.8-1_arm64.deb
+Size: 49516
+MD5sum: 27e533cd8f92fdcf8b244df82a66f73f
+SHA1: 25e7a0432194484e5a54b3f6e96cbba7a33cdbde
+SHA256: cfc949c3bc9fb0547729c610bc315b2bb5f999ae1ee3ea047b86f802a066cd0e
+Section: embedded
+Description: Beepy firmware and installer script
+
+Package: beepy-fw
+Version: 3.8-1
+Architecture: armhf
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 156
+Depends: python3
+Filename: ./beepy-fw/beepy-fw_3.8-1_armhf.deb
+Size: 49516
+MD5sum: a0ea33b737505dad475aaaff3b34fc41
+SHA1: 4941ab309225b9bf6781cc34a45d4f19c73bd6df
+SHA256: 094bb7ddca059266f18bde09fef5fcad126117e3e8bcbfea407f2455a819b5cc
+Section: embedded
+Description: Beepy firmware and installer script
+
 Package: beepy-gomuks
 Version: 0.3-1
 Architecture: armhf
