@@ -1865,6 +1865,32 @@ SHA256: c672c759f3f27000a1050c912d49e072b2f0e185df10463cd65e16bf0c58c046
 Section: embedded
 Description: Beepy tmux menus plugin
 
+Package: impala-wifi
+Version: 0.3-1
+Architecture: arm64
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 5779
+Filename: ./impala-wifi/impala-wifi_0.3-1_arm64.deb
+Size: 1476324
+MD5sum: 94c48063aacaeb79fc6b99314c72df56
+SHA1: a352f83d9df298c818b8796097db74393823445e
+SHA256: 191e0aa8cdeca97005293c15022fb13d7ffc30a6a30f90b8f74340f370a50300
+Section: embedded
+Description: Impala WiFi manager fork
+
+Package: impala-wifi
+Version: 0.3-1
+Architecture: armhf
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 5596
+Filename: ./impala-wifi/impala-wifi_0.3-1_armhf.deb
+Size: 1390680
+MD5sum: 6feafa00e443eadba6c27307a470a44a
+SHA1: d1d547739fdfe907d8c516a9232bb2ce31fdbdb7
+SHA256: dd506dd00ea48fe6475cb34d5dd31bdc35dfb8f09a52627de71100a17370f3d7
+Section: embedded
+Description: Impala WiFi manager fork
+
 Package: sharp-drm
 Version: 1.0-1
 Architecture: armhf
