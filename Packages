@@ -1891,6 +1891,19 @@ SHA256: dd506dd00ea48fe6475cb34d5dd31bdc35dfb8f09a52627de71100a17370f3d7
 Section: embedded
 Description: Impala WiFi manager fork
 
+Package: impala-wifi
+Version: 0.3-2
+Architecture: armhf
+Maintainer: Andrew D'Angelo <dangeloandrew@outlook.com>
+Installed-Size: 5620
+Filename: ./impala-wifi/impala-wifi_0.3-2_armhf.deb
+Size: 1397004
+MD5sum: 696341ec3518d032032d8cdbac5d5c01
+SHA1: 6dfbf313853e044040f1bb96938c7b0adc07a7eb
+SHA256: d0e54aee506a48b2db545c50c8f19cbe98f5bf392f6a49153b307276d0bb446b
+Section: embedded
+Description: Impala WiFi manager fork
+
 Package: sharp-drm
 Version: 1.0-1
 Architecture: armhf
